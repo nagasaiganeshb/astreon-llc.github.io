@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Astreon LLC — Transforming Ideas into Intelligent Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+/* ─── RESET ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:'Outfit',sans-serif;background:#FFFFFF;color:#0F172A;overflow-x:hidden;line-height:1.65}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:'Outfit',sans-serif;border:none;outline:none;background:none}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:#F1F5F9}
+::-webkit-scrollbar-thumb{background:#1E40AF;border-radius:4px}
+
+/* ─── PALETTE ─────────────────────────────
+   Light Enterprise
+   Base:    White → Slate 50 → Slate 100
+   Navy:    #0F172A  (Slate 900) — strong ink
+   Blue:    #1D4ED8  (Blue 700)  — enterprise anchor
+   Sky:     #0EA5E9  (Sky 500)   — accent pop
+   Muted:   #64748B  (Slate 500)
+   Border:  #E2E8F0  (Slate 200)
+──────────────────────────────────────────── */
+:root{
+  --w:   #FFFFFF;
+  --s50: #F8FAFC;
+  --s100:#F1F5F9;
+  --s200:#E2E8F0;
+  --s300:#CBD5E1;
+  --s500:#64748B;
+  --s700:#334155;
+  --s900:#0F172A;
+  --blue: #1D4ED8;
+  --blue2:#2563EB;
+  --blue3:#3B82F6;
+  --sky:  #0EA5E9;
+  --sky2: #38BDF8;
+  --b1:rgba(29,78,216,0.1);
+  --b2:rgba(29,78,216,0.06);
+  --nav:72px;--mx:1260px;--r:12px;
+  --sh1:0 1px 3px rgba(15,23,42,0.06),0 4px 16px rgba(15,23,42,0.06);
+  --sh2:0 4px 12px rgba(15,23,42,0.08),0 12px 40px rgba(15,23,42,0.08);
+  --sh3:0 8px 24px rgba(15,23,42,0.1),0 24px 64px rgba(15,23,42,0.1);
+}
+
+/* ─── NAV ─── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nav);
+  padding:0 clamp(1rem,5vw,3rem);
+  background:rgba(255,255,255,0);
+  border-bottom:1px solid transparent;
+  transition:all .35s ease;
+}
+#nav.on{
+  background:rgba(255,255,255,.96);
+  border-color:var(--s200);
+  box-shadow:0 1px 0 var(--s200),var(--sh1);
+  backdrop-filter:blur(20px);
+}
+.nw{max-width:var(--mx);margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.5px;color:var(--w);display:flex;align-items:center}
+#nav.on .logo{color:var(--s900)}
+.la{color:var(--sky2)}
+#nav.on .la{color:var(--blue)}
+.ld{display:inline-block;width:7px;height:7px;background:var(--sky);border-radius:50%;margin-left:1px;margin-bottom:12px;animation:ldp 2.5s ease-in-out infinite}
+#nav.on .ld{background:var(--blue)}
+@keyframes ldp{0%,100%{transform:scale(1)}50%{transform:scale(1.6);opacity:.6}}
+.nl{display:flex;align-items:center;gap:1.8rem;list-style:none}
+.nl a{font-size:.855rem;font-weight:500;color:rgba(255,255,255,.8);transition:color .2s;position:relative}
+#nav.on .nl a{color:var(--s500)}
+.nl a:not(.nc)::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1.5px;background:var(--sky);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+#nav.on .nl a:not(.nc)::after{background:var(--blue)}
+.nl a:not(.nc):hover{color:var(--w)}
+#nav.on .nl a:not(.nc):hover{color:var(--s900)}
+.nl a:not(.nc):hover::after{transform:scaleX(1)}
+.nc{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:var(--w)!important;padding:.5rem 1.3rem;border-radius:8px;font-weight:600!important;transition:all .25s;backdrop-filter:blur(10px)}
+.nc:hover{background:rgba(255,255,255,.25)!important}
+#nav.on .nc{background:var(--blue)!important;border-color:var(--blue)!important;color:var(--w)!important}
+#nav.on .nc:hover{background:var(--blue2)!important;box-shadow:0 0 24px rgba(29,78,216,0.35)}
+.hbg{display:none;flex-direction:column;gap:5px;padding:5px}
+.hbg span{display:block;width:22px;height:2px;background:var(--w);border-radius:2px;transition:.3s}
+#nav.on .hbg span{background:var(--s900)}
+.hbg.o span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hbg.o span:nth-child(2){opacity:0}
+.hbg.o span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.drw{display:none;position:fixed;top:var(--nav);left:0;right:0;bottom:0;background:var(--w);z-index:800;flex-direction:column;padding:1.5rem clamp(1rem,5vw,3rem);overflow-y:auto;border-top:1px solid var(--s200)}
+.drw.o{display:flex}
+.drw a{font-size:1.05rem;font-weight:500;color:var(--s700);padding:.9rem 0;border-bottom:1px solid var(--s200);display:flex;justify-content:space-between;align-items:center}
+.drw a::after{content:'→';color:var(--s300);font-style:normal}
+.drw a:hover{color:var(--blue)}
+.drw .dct{margin-top:1.5rem;background:var(--blue);color:var(--w);text-align:center;padding:1rem;border-radius:10px;font-weight:600;border-bottom:none}
+.drw .dct::after{display:none}.drw .dct:hover{background:var(--blue2);color:var(--w)}
+
+/* ─── HERO — rich dark navy ─── */
+#hero{
+  min-height:100vh;
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;
+  padding:0 clamp(1rem,5vw,3rem);
+  padding-top:var(--nav);
+  background:linear-gradient(135deg,#0C1A3A 0%,#0F2356 40%,#0A1A4A 70%,#06122E 100%);
+}
+/* animated mesh */
+.hmesh{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(59,130,246,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(59,130,246,.06) 1px,transparent 1px);
+  background-size:60px 60px;
+  animation:gd 30s linear infinite;
+}
+@keyframes gd{to{background-position:60px 60px}}
+.horb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
+.ho1{width:700px;height:700px;background:rgba(59,130,246,.12);top:-200px;right:-100px;animation:oa 14s ease-in-out infinite alternate}
+.ho2{width:500px;height:500px;background:rgba(14,165,233,.08);bottom:-150px;left:-100px;animation:oa 18s ease-in-out infinite alternate-reverse}
+.ho3{width:300px;height:300px;background:rgba(29,78,216,.15);top:30%;left:30%;animation:oa 10s ease-in-out infinite alternate}
+@keyframes oa{to{transform:translate(25px,-25px) scale(1.08)}}
+/* small star dots */
+.stars{position:absolute;inset:0;pointer-events:none}
+.star{position:absolute;width:1.5px;height:1.5px;border-radius:50%;background:#fff;animation:stf 4s ease-in-out infinite;opacity:.4}
+.star:nth-child(1){top:15%;left:20%;animation-delay:0s}.star:nth-child(2){top:30%;left:70%;animation-delay:-.8s}
+.star:nth-child(3){top:60%;left:15%;animation-delay:-1.6s}.star:nth-child(4){top:75%;left:80%;animation-delay:-.4s}
+.star:nth-child(5){top:20%;left:50%;animation-delay:-2s}.star:nth-child(6){top:55%;left:55%;animation-delay:-1.2s}
+.star:nth-child(7){top:40%;left:85%;animation-delay:-.6s}.star:nth-child(8){top:85%;left:40%;animation-delay:-2.4s}
+@keyframes stf{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.9;transform:scale(1.8)}}
+/* glowing ring decoration */
+.hring{position:absolute;border-radius:50%;border:1px solid rgba(59,130,246,.15);pointer-events:none}
+.hr1{width:600px;height:600px;top:-200px;right:-200px;animation:spin 60s linear infinite}
+.hr2{width:400px;height:400px;top:-100px;right:-100px;border-color:rgba(14,165,233,.1);animation:spin 40s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hi{position:relative;z-index:2;max-width:var(--mx);margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;padding:5rem 0 4rem}
+.hbadge{display:inline-flex;align-items:center;gap:.55rem;background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);border-radius:100px;padding:.4rem 1rem;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#93C5FD;margin-bottom:1.8rem;opacity:0;animation:fu .7s .1s forwards}
+.hbdot{width:6px;height:6px;border-radius:50%;background:var(--sky2);animation:ldp 2s infinite}
+.hh{font-family:'Fraunces',serif;font-size:clamp(2.8rem,5vw,4.8rem);font-weight:700;line-height:1.05;letter-spacing:-1.5px;color:#F8FAFC;margin-bottom:1.8rem;opacity:0;animation:fu .85s .25s forwards}
+.hh .it{font-style:italic;font-weight:300;color:#7DD3FC;display:block}
+.hh .ou{display:block;-webkit-text-stroke:1px rgba(255,255,255,.25);color:transparent}
+.hp{font-size:1rem;color:rgba(248,250,252,.6);line-height:1.85;font-weight:300;max-width:500px;margin-bottom:2.5rem;opacity:0;animation:fu .85s .4s forwards}
+.hbtns{display:flex;gap:.85rem;flex-wrap:wrap;opacity:0;animation:fu .85s .55s forwards}
+.btn-p{display:inline-flex;align-items:center;gap:.45rem;background:var(--blue);color:#fff;padding:.88rem 1.8rem;border-radius:8px;font-size:.9rem;font-weight:600;transition:all .3s cubic-bezier(.34,1.56,.64,1);box-shadow:0 4px 20px rgba(29,78,216,.5)}
+.btn-p:hover{background:var(--blue2);transform:translateY(-3px);box-shadow:0 8px 36px rgba(29,78,216,.65)}
+.btn-s{display:inline-flex;align-items:center;gap:.45rem;background:rgba(255,255,255,.08);color:#F8FAFC;border:1px solid rgba(255,255,255,.2);padding:.88rem 1.8rem;border-radius:8px;font-size:.9rem;font-weight:500;transition:all .3s;backdrop-filter:blur(8px)}
+.btn-s:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);transform:translateY(-2px)}
+/* hero right — glass cards panel */
+.hpanel{display:flex;flex-direction:column;gap:1rem;opacity:0;animation:fu .9s .5s forwards}
+.hrow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.hbox{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r);padding:1.4rem;
+  backdrop-filter:blur(16px);
+  transition:all .3s;position:relative;overflow:hidden;
+}
+.hbox::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue3),var(--sky2));opacity:0;transition:opacity .3s}
+.hbox:hover{background:rgba(255,255,255,.11);border-color:rgba(59,130,246,.35);transform:translateY(-3px)}
+.hbox:hover::before{opacity:1}
+.hbico{width:40px;height:40px;border-radius:9px;background:rgba(59,130,246,.2);border:1px solid rgba(59,130,246,.25);display:flex;align-items:center;justify-content:center;margin-bottom:.85rem}
+.hbico svg{width:20px;height:20px}
+.hbt{font-size:.88rem;font-weight:700;color:#F1F5FF;margin-bottom:.2rem}
+.hbs{font-size:.75rem;color:rgba(255,255,255,.45);line-height:1.5}
+.hbig{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:500;color:#7DD3FC;line-height:1;margin-bottom:.2rem}
+.hbox.wide{grid-column:1/-1;display:flex;align-items:center;gap:1.4rem;padding:1.4rem 1.6rem}
+.hbox.wide .hbico{margin-bottom:0;flex-shrink:0;width:48px;height:48px}
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+/* scroll indicator */
+.shl{position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;opacity:0;animation:fu .5s 1.6s forwards;z-index:2}
+.smou{width:20px;height:34px;border:1.5px solid rgba(255,255,255,.2);border-radius:99px;display:flex;justify-content:center;padding-top:4px}
+.swh{width:2.5px;height:5px;background:var(--sky2);border-radius:99px;animation:swh 1.8s ease-in-out infinite}
+@keyframes swh{0%{transform:translateY(0);opacity:1}100%{transform:translateY(9px);opacity:0}}
+.slb{font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3)}
+
+/* ─── STATS STRIP — white bg, navy text ─── */
+#strip{background:var(--w);border-bottom:1px solid var(--s200)}
+.sti{max-width:var(--mx);margin:0 auto;padding:2.8rem clamp(1rem,5vw,3rem);display:grid;grid-template-columns:repeat(4,1fr)}
+.stc{padding:1.2rem 2rem;text-align:center;border-right:1px solid var(--s200)}
+.stc:last-child{border-right:none}
+.stn{font-family:'Fraunces',serif;font-size:clamp(1.9rem,3vw,2.6rem);font-weight:700;color:var(--s900);line-height:1;margin-bottom:.45rem}
+.stn em{color:var(--blue);font-style:normal;font-size:1.4rem}
+.stl{font-size:.8rem;color:var(--s500);line-height:1.55;font-weight:400}
+
+/* ─── SECTION BASE ─── */
+.sec{padding:6rem clamp(1rem,5vw,3rem)}
+.inn{max-width:var(--mx);margin:0 auto}
+.ey{display:inline-flex;align-items:center;gap:.4rem;font-size:.68rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue);margin-bottom:.8rem}
+.ey::before{content:'';width:16px;height:2px;background:var(--blue);border-radius:2px;flex-shrink:0}
+.sh{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.5px;color:var(--s900);margin-bottom:.9rem}
+.sh.lt{color:#F8FAFC}
+.sp{font-size:.97rem;color:var(--s500);line-height:1.82;font-weight:300;max-width:520px}
+.sp.lt{color:rgba(248,250,252,.65)}
+
+/* ─── SERVICES — s50 bg, white cards ─── */
+#sv{background:var(--s50)}
+.svh{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:end;margin-bottom:3.5rem}
+.svg2{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.sc{
+  background:var(--w);
+  border:1px solid var(--s200);
+  border-radius:var(--r);padding:2rem 1.8rem;
+  position:relative;overflow:hidden;
+  box-shadow:var(--sh1);
+  transition:all .35s cubic-bezier(.34,1.56,.64,1);
+  cursor:default;
+}
+.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--sky));transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.sc::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(29,78,216,.03) 0%,transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+.sc:hover{transform:translateY(-5px);box-shadow:var(--sh3);border-color:rgba(29,78,216,.2)}
+.sc:hover::before{transform:scaleX(1)}
+.sc:hover::after{opacity:1}
+.sci{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,rgba(29,78,216,.1),rgba(14,165,233,.05));border:1px solid rgba(29,78,216,.15);display:flex;align-items:center;justify-content:center;margin-bottom:1.3rem;transition:all .35s cubic-bezier(.34,1.56,.64,1)}
+.sci svg{width:24px;height:24px}
+.sc:hover .sci{transform:scale(1.1) rotate(-5deg);background:linear-gradient(135deg,rgba(29,78,216,.18),rgba(14,165,233,.1));box-shadow:0 4px 16px rgba(29,78,216,.2)}
+.scn{font-size:1rem;font-weight:700;color:var(--s900);margin-bottom:.5rem;letter-spacing:-.2px}
+.scd{font-size:.855rem;color:var(--s500);line-height:1.78;font-weight:300}
+.scl{display:inline-flex;align-items:center;gap:.35rem;margin-top:1.2rem;font-size:.8rem;font-weight:600;color:var(--blue);transition:gap .2s}
+.scl svg{width:14px;height:14px;transition:transform .2s}
+.sc:hover .scl{gap:.6rem;color:var(--sky)}
+.sc:hover .scl svg{transform:translateX(3px)}
+
+/* ─── WHY — deep navy bg, glass cards ─── */
+#wy{
+  background:linear-gradient(160deg,#0C1A3A 0%,#0F2356 60%,#091530 100%);
+  position:relative;overflow:hidden;
+}
+#wy::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(59,130,246,.05) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+.wglow{position:absolute;right:-100px;top:50%;transform:translateY(-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,.1) 0%,transparent 65%);pointer-events:none;filter:blur(60px)}
+.wh{margin-bottom:3.5rem;position:relative;z-index:1}
+.wgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;position:relative;z-index:1}
+.wcd{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r);padding:2.4rem;
+  position:relative;overflow:hidden;
+  transition:all .3s;
+}
+.wcd:hover{background:rgba(255,255,255,.09);border-color:rgba(59,130,246,.4);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.wcd::after{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:linear-gradient(to bottom,var(--blue3),var(--sky2));transition:height .4s ease}
+.wcd:hover::after{height:100%}
+/* numbers — light italic, not heavy */
+.wn{
+  font-family:'Fraunces',serif;
+  font-size:3.5rem;font-weight:300;font-style:italic;
+  line-height:1;margin-bottom:.8rem;
+  color:rgba(147,197,253,.35);
+  letter-spacing:-1px;
+  transition:color .3s;
+}
+.wcd:hover .wn{color:rgba(147,197,253,.6)}
+.wt{font-size:1.02rem;font-weight:700;color:#F1F5FF;margin-bottom:.6rem}
+.wd{font-size:.875rem;color:rgba(248,250,252,.58);line-height:1.78;font-weight:300}
+
+/* ─── TECH MARQUEE — white ─── */
+#tc{background:var(--w);padding:4rem clamp(1rem,5vw,3rem);overflow:hidden;border-top:1px solid var(--s200);border-bottom:1px solid var(--s200)}
+.tcl{text-align:center;font-size:.68rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--s300);margin-bottom:2rem}
+.mw{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.mt{display:flex;gap:1rem;width:max-content;animation:mq 28s linear infinite}
+.mt:hover{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+.chip{display:inline-flex;align-items:center;gap:.5rem;background:var(--s50);border:1px solid var(--s200);border-radius:100px;padding:.55rem 1.2rem;font-size:.82rem;font-weight:500;color:var(--s700);white-space:nowrap;transition:all .25s;box-shadow:var(--sh1)}
+.chip:hover{border-color:var(--blue3);color:var(--blue);transform:translateY(-2px);background:rgba(29,78,216,.04)}
+.cdot{width:6px;height:6px;border-radius:50%;background:var(--sky);flex-shrink:0}
+
+/* ─── TESTIMONIALS — s50 ─── */
+#te{background:var(--s50)}
+.teh{margin-bottom:3.5rem}
+.tgd{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.tcd{background:var(--w);border:1px solid var(--s200);border-radius:var(--r);padding:2.2rem;display:flex;flex-direction:column;box-shadow:var(--sh1);transition:all .3s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden}
+.tcd::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--sky));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.tcd:hover{transform:translateY(-5px);box-shadow:var(--sh3);border-color:rgba(29,78,216,.2)}
+.tcd:hover::before{transform:scaleX(1)}
+.tqm{font-family:'Fraunces',serif;font-size:4.5rem;color:var(--blue);line-height:.7;margin-bottom:1rem;opacity:.15}
+.ttx{font-size:.92rem;color:var(--s700);line-height:1.82;font-style:italic;font-weight:300;flex:1;margin-bottom:1.5rem}
+.tdv{width:28px;height:2px;background:var(--blue);opacity:.3;margin-bottom:1.2rem}
+.tpr{display:flex;align-items:center;gap:.85rem}
+.tav{width:42px;height:42px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.82rem;color:#fff;background:linear-gradient(135deg,var(--blue),var(--sky))}
+.tnm{font-size:.87rem;font-weight:700;color:var(--s900)}
+.trl{font-size:.76rem;color:var(--s500);margin-top:.1rem}
+
+/* ─── ABOUT — white ─── */
+#ab{background:var(--w)}
+.abinn{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.acs{display:flex;flex-direction:column;gap:1rem}
+.acd{background:var(--s50);border:1px solid var(--s200);border-radius:var(--r);padding:1.8rem;transition:all .3s;box-shadow:var(--sh1)}
+.acd:hover{border-color:rgba(29,78,216,.25);background:rgba(29,78,216,.03);transform:translateX(4px);box-shadow:var(--sh2)}
+.alb{font-size:.67rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:.45rem}
+.avl{font-family:'Fraunces',serif;font-size:2rem;font-weight:700;color:var(--s900);line-height:1}
+.asb{font-size:.8rem;color:var(--s500);margin-top:.3rem}
+.abd{font-size:.9rem;color:var(--s700);line-height:1.78;font-weight:300}
+.acp .sp{max-width:100%;margin-top:.8rem}
+.acp .sp+.sp{margin-top:.75rem}
+.fq{margin-top:2rem;border-radius:var(--r);background:linear-gradient(135deg,rgba(29,78,216,.05),rgba(14,165,233,.03));border:1px solid rgba(29,78,216,.15);padding:1.6rem;position:relative;overflow:hidden}
+.fq::before{content:'"';font-family:'Fraunces',serif;font-size:8rem;font-weight:300;color:rgba(29,78,216,.07);position:absolute;right:.5rem;top:-1rem;line-height:1;pointer-events:none}
+.fqp{font-family:'Fraunces',serif;font-size:.97rem;font-style:italic;font-weight:300;color:var(--s700);line-height:1.78;position:relative;z-index:1}
+.fqc{display:block;margin-top:.8rem;font-size:.77rem;font-weight:600;color:var(--blue);font-style:normal;letter-spacing:.3px}
+
+/* ─── MAP ─── */
+#mp{background:var(--s50);padding:0;border-top:1px solid var(--s200);border-bottom:1px solid var(--s200)}
+.mapw{max-width:var(--mx);margin:0 auto;padding:3rem clamp(1rem,5vw,3rem)}
+.mapc{border-radius:var(--r);overflow:hidden;border:1px solid var(--s200);box-shadow:var(--sh2)}
+.mapc iframe{display:block;width:100%;height:360px}
+
+/* ─── CONTACT — white ─── */
+#ct{background:var(--w)}
+.cti{display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;align-items:start}
+.ctcp .sp{max-width:100%;margin-top:.8rem;margin-bottom:2.5rem}
+.citm{display:flex;align-items:flex-start;gap:.9rem;margin-bottom:1.4rem}
+.cico{width:44px;height:44px;flex-shrink:0;border-radius:10px;background:rgba(29,78,216,.07);border:1px solid rgba(29,78,216,.15);display:flex;align-items:center;justify-content:center;transition:all .25s}
+.cico svg{width:20px;height:20px}
+.citm:hover .cico{background:rgba(29,78,216,.14);transform:scale(1.08)}
+.clb{font-size:.67rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--s300);margin-bottom:.2rem}
+.cvl{font-size:.9rem;font-weight:500;color:var(--s900)}
+/* form box */
+.fbox{background:var(--s50);border:1px solid var(--s200);border-radius:16px;padding:2.8rem;box-shadow:var(--sh2)}
+.frw{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{margin-bottom:1.1rem}
+.fg label{display:block;font-size:.68rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--s500);margin-bottom:.45rem}
+.fg input,.fg select,.fg textarea{width:100%;background:var(--w);border:1.5px solid var(--s200);border-radius:8px;padding:.78rem 1rem;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--s900);outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(29,78,216,.1)}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--s300)}
+.fg textarea{resize:vertical;min-height:108px}
+.fg select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748B' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer}
+.bsd{width:100%;background:var(--blue);color:#fff;padding:1rem 1.5rem;border-radius:8px;font-size:.95rem;font-weight:600;letter-spacing:.2px;transition:all .3s cubic-bezier(.34,1.56,.64,1);display:flex;align-items:center;justify-content:center;gap:.5rem;box-shadow:0 4px 16px rgba(29,78,216,.3)}
+.bsd:hover{background:var(--blue2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(29,78,216,.45)}
+.bsd:active{transform:none}
+#fm{margin-top:1rem;padding:.75rem 1rem;border-radius:8px;font-size:.84rem;font-weight:500;display:none;text-align:center}
+#fm.ok{background:rgba(16,185,129,.08);color:#059669;border:1px solid rgba(16,185,129,.2)}
+#fm.err{background:rgba(239,68,68,.08);color:#dc2626;border:1px solid rgba(239,68,68,.2)}
+
+/* ─── FOOTER ─── */
+footer{background:var(--s900);padding:4rem clamp(1rem,5vw,3rem) 2rem;border-top:1px solid rgba(255,255,255,.06)}
+.fgrid{max-width:var(--mx);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.07)}
+.flogo{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem;color:#F8FAFC;letter-spacing:-.4px;margin-bottom:.55rem}
+.flogo span{color:var(--sky)}
+.ftag{font-size:.82rem;color:rgba(248,250,252,.38);line-height:1.65;font-weight:300;max-width:230px;margin-bottom:1.4rem}
+.fsoc{display:flex;gap:.65rem}
+.fsi{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:all .25s;color:rgba(255,255,255,.45)}
+.fsi svg{width:16px;height:16px}
+.fsi:hover{background:rgba(59,130,246,.2);border-color:rgba(59,130,246,.4);color:var(--sky2)}
+.fct{font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1.2rem}
+.fnv{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.fnv a{font-size:.855rem;color:rgba(255,255,255,.42);transition:color .2s}
+.fnv a:hover{color:var(--sky2)}
+.fbot{max-width:var(--mx);margin:2rem auto 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fcp{font-size:.75rem;color:rgba(255,255,255,.2)}
+.fbl{display:flex;gap:1.5rem}
+.fbl a{font-size:.75rem;color:rgba(255,255,255,.2);transition:color .2s}
+.fbl a:hover{color:rgba(255,255,255,.45)}
+
+/* ─── REVEAL ─── */
+.r{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.r.in{opacity:1;transform:none}
+.r.d1{transition-delay:.08s}.r.d2{transition-delay:.16s}
+.r.d3{transition-delay:.24s}.r.d4{transition-delay:.32s}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){
+  .hi{grid-template-columns:1fr;gap:3rem;padding:3.5rem 0 3rem}
+  .hpanel{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .hrow{grid-template-columns:1fr 1fr}
+  .hbox.wide{grid-column:1/-1}
+  .hp{max-width:100%}
+  .svh{grid-template-columns:1fr}.svg2{grid-template-columns:repeat(2,1fr)}
+  .wgrid{grid-template-columns:1fr 1fr}.tgd{grid-template-columns:1fr 1fr}
+  .abinn{grid-template-columns:1fr;gap:3rem}.cti{grid-template-columns:1fr;gap:3rem}
+  .sti{grid-template-columns:repeat(2,1fr)}
+  .stc{border-right:none;border-bottom:1px solid var(--s200)}
+  .stc:nth-child(odd){border-right:1px solid var(--s200)}
+  .stc:nth-last-child(-n+2){border-bottom:none}
+  .fgrid{grid-template-columns:1fr 1fr;gap:2rem}
+}
+@media(max-width:768px){
+  :root{--nav:60px}
+  .nl{display:none}.hbg{display:flex}
+  .hh{font-size:clamp(2.5rem,9vw,3.2rem)}
+  .hpanel{grid-template-columns:1fr 1fr}
+  .hbtns{flex-direction:column;gap:.7rem}
+  .hbtns a{text-align:center;width:100%;justify-content:center}
+  .sti{grid-template-columns:1fr 1fr;padding:2rem clamp(1rem,5vw,3rem)}
+  .stc{border-right:none!important;border-bottom:1px solid var(--s200)!important}
+  .stc:nth-child(odd){border-right:1px solid var(--s200)!important}
+  .stc:nth-last-child(-n+2){border-bottom:none!important}
+  .svh{gap:1rem}.svg2{grid-template-columns:1fr}
+  .wgrid{grid-template-columns:1fr}.tgd{grid-template-columns:1fr}
+  .abinn{gap:2.5rem}.cti{gap:2.5rem}
+  .frw{grid-template-columns:1fr}.fbox{padding:1.8rem}
+  .sec{padding:4.5rem clamp(1rem,5vw,3rem)}
+  .fgrid{grid-template-columns:1fr;gap:2rem}
+  .fbot{flex-direction:column;text-align:center}
+  .mapc iframe{height:260px}
+}
+@media(max-width:480px){
+  .hpanel{grid-template-columns:1fr}
+  .hbox.wide{grid-column:auto}
+  .sti{grid-template-columns:1fr}
+  .stc{border-right:none!important;border-bottom:1px solid var(--s200)!important}
+  .stc:last-child{border-bottom:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nw">
+    <a href="#hero" class="logo"><span class="la">A</span>streon<span class="ld"></span></a>
+    <ul class="nl">
+      <li><a href="#sv">Services</a></li>
+      <li><a href="#wy">Why Us</a></li>
+      <li><a href="#tc">Technologies</a></li>
+      <li><a href="#te">Testimonials</a></li>
+      <li><a href="#ab">About</a></li>
+      <li><a href="#ct" class="nc">Contact Us</a></li>
+    </ul>
+    <button class="hbg" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="drw" id="drw">
+  <a href="#sv" onclick="cd()">Services</a>
+  <a href="#wy" onclick="cd()">Why Astreon</a>
+  <a href="#tc" onclick="cd()">Technologies</a>
+  <a href="#te" onclick="cd()">Testimonials</a>
+  <a href="#ab" onclick="cd()">About Us</a>
+  <a href="#ct" class="dct" onclick="cd()">Contact Us →</a>
+</div>
+
+<!-- HERO — stays dark for impact -->
+<section id="hero">
+  <div class="hmesh"></div>
+  <div class="horb ho1"></div><div class="horb ho2"></div><div class="horb ho3"></div>
+  <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+  <div class="hring hr1"></div><div class="hring hr2"></div>
+  <div class="hi">
+    <div>
+      <div class="hbadge"><div class="hbdot"></div>US-Based IT Consulting</div>
+      <h1 class="hh">Transforming<span class="it">Ideas into</span><span class="ou">Intelligent Solutions</span></h1>
+      <p class="hp">A US-based IT consulting firm empowering businesses through Cloud, Data Analytics, AI and modern technology — backed by 20+ years of industry expertise and a powerful professional network.</p>
+      <div class="hbtns">
+        <a href="#sv" class="btn-p"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Explore Services</a>
+        <a href="#ct" class="btn-s">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hpanel">
+      <div class="hrow">
+        <div class="hbox"><div class="hbico"><svg viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></div><div class="hbt">Cloud Services</div><div class="hbs">AWS · Azure · GCP</div></div>
+        <div class="hbox"><div class="hbico"><svg viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><path d="M2 20h20"/></svg></div><div class="hbt">Data Analytics</div><div class="hbs">Power BI · Dashboards</div></div>
+      </div>
+      <div class="hrow">
+        <div class="hbox"><div class="hbico"><svg viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><div class="hbt">AI & Automation</div><div class="hbs">Intelligent Workflows</div></div>
+        <div class="hbox"><div class="hbico"><svg viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="hbt">Cybersecurity</div><div class="hbs">Compliance · Security</div></div>
+      </div>
+      <div class="hbox wide"><div class="hbico" style="width:48px;height:48px;flex-shrink:0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div><div><div class="hbig">20<span style="font-size:1.5rem;color:#38BDF8">+</span></div><div class="hbt">Years of Industry Expertise</div><div class="hbs">Trusted by businesses & professionals across the US</div></div></div>
+    </div>
+  </div>
+  <div class="shl"><div class="smou"><div class="swh"></div></div><span class="slb">Scroll</span></div>
+</section>
+
+<!-- STATS — clean white -->
+<div id="strip">
+  <div class="sti">
+    <div class="stc r"><div class="stn"><span class="cnt" data-n="20">0</span><em>+</em></div><div class="stl">Years of Industry<br/>Experience</div></div>
+    <div class="stc r d1"><div class="stn"><span class="cnt" data-n="500">0</span><em>+</em></div><div class="stl">Professionals<br/>Placed & Connected</div></div>
+    <div class="stc r d2"><div class="stn">100<em>%</em></div><div class="stl">US-Based<br/>Operations</div></div>
+    <div class="stc r d3"><div class="stn"><span class="cnt" data-n="50">0</span><em>+</em></div><div class="stl">Trusted Network<br/>Partners</div></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="sv" class="sec">
+  <div class="inn">
+    <div class="svh">
+      <div class="r"><span class="ey">What We Do</span><h2 class="sh">Services Built for<br/>Modern Enterprises</h2></div>
+      <div class="r d1"><p class="sp">From cloud infrastructure to intelligent automation — enterprise-grade technology that accelerates your business forward.</p></div>
+    </div>
+    <div class="svg2">
+      <div class="sc r d1"><div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></div><div class="scn">Cloud Services</div><p class="scd">Migrate, manage and scale on AWS, Azure or Google Cloud — securely and efficiently, with zero disruption to your operations.</p><a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      <div class="sc r d2"><div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><path d="M2 20h20"/></svg></div><div class="scn">Power BI & Data Analytics</div><p class="scd">Turn raw data into strategic decisions. Interactive dashboards, automated reports and pipelines for real-time business visibility.</p><a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      <div class="sc r d3"><div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><div class="scn">AI & Intelligent Automation</div><p class="scd">Reduce manual effort with AI-driven workflows — from robotic process automation to intelligent decision-making that scales with you.</p><a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      <div class="sc r d1"><div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="scn">Cybersecurity & Compliance</div><p class="scd">Protect your business with end-to-end security assessments, compliance frameworks and managed security services tailored to your risk profile.</p><a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      <div class="sc r d2"><div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="scn">Full Stack Web Development</div><p class="scd">End-to-end applications built for performance and scale — from UI/UX to backend architecture using modern, reliable tech stacks.</p><a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      <div class="sc r d3"><div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="scn">IT Staffing & Workforce Solutions</div><p class="scd">Connecting businesses with exceptional technical talent through a vast professional network built over two decades in the US IT industry.</p><a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      <div class="sc r d1"><div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div><div class="scn">Digital Transformation Consulting</div><p class="scd">Strategy-first consulting to modernize your technology, streamline operations and future-proof your business — end to end.</p><a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      <div class="sc r d2"><div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="scn">Managed IT Services</div><p class="scd">Proactive monitoring, support and management of your IT infrastructure — so your team stays focused on your core business.</p><a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+      <div class="sc r d3"><div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg></div><div class="scn">Data Engineering & Integration</div><p class="scd">Robust data pipelines, warehouses and integration layers that connect your systems and unlock the full value of your data.</p><a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY — dark navy for contrast rhythm -->
+<section id="wy" class="sec">
+  <div class="wglow"></div>
+  <div class="inn" style="position:relative;z-index:1">
+    <div class="wh r"><span class="ey" style="color:#93C5FD">Why Choose Us</span><h2 class="sh lt">What Sets Astreon Apart</h2></div>
+    <div class="wgrid">
+      <div class="wcd r d1"><div class="wn">01</div><div class="wt">20+ Years of Industry Expertise</div><p class="wd">Deep, hands-on experience across IT consulting, staffing and technology delivery spanning leading US organizations across multiple industries.</p></div>
+      <div class="wcd r d2"><div class="wn">02</div><div class="wt">A Network You Can Trust</div><p class="wd">Decades of genuine relationships with IT professionals, consultancies and businesses across the US. That network becomes your competitive advantage.</p></div>
+      <div class="wcd r d3"><div class="wn">03</div><div class="wt">Results-Driven Delivery</div><p class="wd">We don't just advise — we implement, support and ensure every engagement delivers measurable business value. Your outcomes define our success.</p></div>
+      <div class="wcd r d4"><div class="wn">04</div><div class="wt">US-Based, Globally Connected</div><p class="wd">Headquartered in the United States with access to a global pool of technology talent — local accountability with world-class expertise.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH MARQUEE -->
+<div id="tc">
+  <div class="tcl r">Technologies & Platforms We Work With</div>
+  <div class="mw r d1"><div class="mt">
+    <div class="chip"><div class="cdot"></div>Microsoft Azure</div><div class="chip"><div class="cdot"></div>Amazon AWS</div><div class="chip"><div class="cdot"></div>Google Cloud</div><div class="chip"><div class="cdot"></div>Power BI</div><div class="chip"><div class="cdot"></div>React.js</div><div class="chip"><div class="cdot"></div>Node.js</div><div class="chip"><div class="cdot"></div>Python</div><div class="chip"><div class="cdot"></div>Salesforce</div><div class="chip"><div class="cdot"></div>ServiceNow</div><div class="chip"><div class="cdot"></div>UiPath</div><div class="chip"><div class="cdot"></div>Snowflake</div><div class="chip"><div class="cdot"></div>Tableau</div><div class="chip"><div class="cdot"></div>Docker</div><div class="chip"><div class="cdot"></div>Kubernetes</div><div class="chip"><div class="cdot"></div>Azure DevOps</div><div class="chip"><div class="cdot"></div>SQL Server</div>
+    <div class="chip"><div class="cdot"></div>Microsoft Azure</div><div class="chip"><div class="cdot"></div>Amazon AWS</div><div class="chip"><div class="cdot"></div>Google Cloud</div><div class="chip"><div class="cdot"></div>Power BI</div><div class="chip"><div class="cdot"></div>React.js</div><div class="chip"><div class="cdot"></div>Node.js</div><div class="chip"><div class="cdot"></div>Python</div><div class="chip"><div class="cdot"></div>Salesforce</div><div class="chip"><div class="cdot"></div>ServiceNow</div><div class="chip"><div class="cdot"></div>UiPath</div><div class="chip"><div class="cdot"></div>Snowflake</div><div class="chip"><div class="cdot"></div>Tableau</div><div class="chip"><div class="cdot"></div>Docker</div><div class="chip"><div class="cdot"></div>Kubernetes</div><div class="chip"><div class="cdot"></div>Azure DevOps</div><div class="chip"><div class="cdot"></div>SQL Server</div>
+  </div></div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section id="te" class="sec">
+  <div class="inn">
+    <div class="teh r"><span class="ey">Testimonials</span><h2 class="sh">Trusted by Professionals<br/>Across the Industry</h2></div>
+    <div class="tgd">
+      <div class="tcd r d1"><div class="tqm">"</div><p class="ttx">The depth of knowledge and quality of talent connections through Astreon are genuinely impressive. They understood exactly what we needed and delivered beyond expectations.</p><div class="tdv"></div><div class="tpr"><div class="tav">JD</div><div><div class="tnm">[Name], [Title]</div><div class="trl">[Company], USA</div></div></div></div>
+      <div class="tcd r d2"><div class="tqm">"</div><p class="ttx">Working with this team was a turning point for us. Their network is unmatched and their hands-on consulting approach gave us confidence every step of the way.</p><div class="tdv"></div><div class="tpr"><div class="tav">SM</div><div><div class="tnm">[Name], [Title]</div><div class="trl">[Company], USA</div></div></div></div>
+      <div class="tcd r d3"><div class="tqm">"</div><p class="ttx">I reached out with a rough idea of what I needed. The guidance was so clear — I now have a role I'm genuinely proud of, at a company I love.</p><div class="tdv"></div><div class="tpr"><div class="tav">RK</div><div><div class="tnm">[Name], [Title]</div><div class="trl">[Company], USA</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="ab" class="sec">
+  <div class="inn">
+    <div class="abinn">
+      <div class="acs r">
+        <div class="acd"><div class="alb">Founded</div><div class="avl">2024</div><div class="asb">Incorporated in the United States</div></div>
+        <div class="acd"><div class="alb">Experience</div><div class="avl">20+ Years</div><div class="asb">In the US IT industry</div></div>
+        <div class="acd"><div class="alb">Our Mission</div><div class="abd">To bridge the gap between great technology and the businesses that need it — through expertise, genuine relationships and a relentless commitment to results.</div></div>
+      </div>
+      <div class="acp r d2">
+        <span class="ey">About Astreon</span>
+        <h2 class="sh">Built on Trust.<br/>Driven by Expertise.</h2>
+        <p class="sp">Astreon LLC was founded with one mission: to connect great technology with the businesses and people that need it most.</p>
+        <p class="sp">With over two decades working across leading US organizations, our founder built a career around relationships — placing IT professionals in the right roles, advising consultancies on growth, and helping hundreds of individuals build careers in the United States.</p>
+        <p class="sp">Today, Astreon LLC delivers Cloud, Data, AI, Cybersecurity and development services to clients who value quality, transparency and long-term partnership.</p>
+        <div class="fq"><p class="fqp">"I've spent 20+ years watching the right connection change the trajectory of a business or a career. Astreon exists to make those connections — and to deliver real technology value alongside them."</p><cite class="fqc">— [Founder Name], Founder & CEO, Astreon LLC</cite></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<div id="mp">
+  <div class="mapw r">
+    <div class="mapc">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13703628.708229877!2d-100.0!3d38.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited%20States!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Astreon LLC Location"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="ct" class="sec">
+  <div class="inn">
+    <div class="cti">
+      <div class="ctcp r">
+        <span class="ey">Get In Touch</span>
+        <h2 class="sh">Let's Build<br/>Something Together</h2>
+        <p class="sp">Whether you're looking to modernize your technology, find the right talent, or explore how Astreon can support your goals — we'd love to hear from you.</p>
+        <div class="citm"><div class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="clb">Address</div><div class="cvl">[City, State], United States</div></div></div>
+        <div class="citm"><div class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div><div><div class="clb">Email</div><div class="cvl">info@astreonllc.com</div></div></div>
+        <div class="citm"><div class="cico"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l1.68-1.68a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div><div><div class="clb">Phone</div><div class="cvl">+1 (000) 000-0000</div></div></div>
+      </div>
+      <div class="r d2">
+        <div class="fbox">
+          <form id="cf">
+            <div class="frw"><div class="fg"><label>First Name</label><input type="text" name="first_name" placeholder="John" required/></div><div class="fg"><label>Last Name</label><input type="text" name="last_name" placeholder="Smith" required/></div></div>
+            <div class="fg"><label>Email Address</label><input type="email" name="email" placeholder="john@company.com" required/></div>
+            <div class="fg"><label>Phone (Optional)</label><input type="tel" name="phone" placeholder="+1 (000) 000-0000"/></div>
+            <div class="fg"><label>Service of Interest</label>
+              <select name="service" required>
+                <option value="" disabled selected>Select a service…</option>
+                <option>Cloud Services</option><option>Power BI &amp; Data Analytics</option>
+                <option>AI &amp; Intelligent Automation</option><option>Cybersecurity &amp; Compliance</option>
+                <option>Full Stack Web Development</option><option>IT Staffing &amp; Workforce Solutions</option>
+                <option>Digital Transformation Consulting</option><option>Managed IT Services</option>
+                <option>Data Engineering &amp; Integration</option><option>Other / General Inquiry</option>
+              </select>
+            </div>
+            <div class="fg"><label>Message</label><textarea name="message" placeholder="Tell us about your project or requirements…" required></textarea></div>
+            <button type="submit" class="bsd" id="sb"><span id="st2">Send Message →</span></button>
+            <div id="fm"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fgrid">
+    <div>
+      <div class="flogo"><span>A</span>streon LLC</div>
+      <p class="ftag">Transforming Ideas into Intelligent Solutions. US-Based IT Consulting & Technology Services.</p>
+      <div class="fsoc">
+        <a href="#" class="fsi" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" class="fsi" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="#" class="fsi" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" class="fsi" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      </div>
+    </div>
+    <div><div class="fct">Services</div><ul class="fnv"><li><a href="#sv">Cloud Services</a></li><li><a href="#sv">Data Analytics</a></li><li><a href="#sv">AI & Automation</a></li><li><a href="#sv">Cybersecurity</a></li><li><a href="#sv">IT Staffing</a></li><li><a href="#sv">Managed IT</a></li></ul></div>
+    <div><div class="fct">Company</div><ul class="fnv"><li><a href="#ab">About Us</a></li><li><a href="#wy">Why Astreon</a></li><li><a href="#te">Testimonials</a></li><li><a href="#tc">Technologies</a></li><li><a href="#ct">Contact Us</a></li></ul></div>
+    <div><div class="fct">Contact</div><ul class="fnv"><li><a href="mailto:info@astreonllc.com">info@astreonllc.com</a></li><li><a href="tel:+10000000000">+1 (000) 000-0000</a></li><li><a href="#mp">[City, State], USA</a></li></ul></div>
+  </div>
+  <div class="fbot"><span class="fcp">© 2025 Astreon LLC. All Rights Reserved.</span><div class="fbl"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
+</footer>
+
+<script>
+/* scroll-on-reload fix */
+if('scrollRestoration' in history)history.scrollRestoration='manual';
+window.addEventListener('load',()=>window.scrollTo(0,0));
+
+/* nav */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('on',scrollY>30),{passive:true});
+
+/* hamburger */
+const hbg=document.getElementById('hbg'),drw=document.getElementById('drw');
+hbg.addEventListener('click',()=>{const o=drw.classList.toggle('o');hbg.classList.toggle('o',o);document.body.style.overflow=o?'hidden':''});
+function cd(){drw.classList.remove('o');hbg.classList.remove('o');document.body.style.overflow=''}
+
+/* reveal */
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}})},{threshold:0.08});
+document.querySelectorAll('.r').forEach(el=>ro.observe(el));
+
+/* counters */
+function cu(el,n){const dur=1800,s=performance.now();(function t(now){const p=Math.min((now-s)/dur,1),e=1-Math.pow(1-p,3);el.textContent=Math.floor(e*n);if(p<1)requestAnimationFrame(t)})(s)}
+let counted=false;
+new IntersectionObserver(es=>{if(es[0].isIntersecting&&!counted){counted=true;document.querySelectorAll('.cnt').forEach(el=>cu(el,+el.dataset.n))}},{threshold:.3}).observe(document.getElementById('strip'));
+
+/* EmailJS */
+(function(){emailjs.init({publicKey:'YOUR_PUBLIC_KEY'})})();
+document.getElementById('cf').addEventListener('submit',function(e){
+  e.preventDefault();
+  const btn=document.getElementById('sb'),txt=document.getElementById('st2'),msg=document.getElementById('fm');
+  btn.disabled=true;txt.textContent='Sending…';
+  emailjs.send('YOUR_SERVICE_ID','YOUR_TEMPLATE_ID',{first_name:this.first_name.value,last_name:this.last_name.value,email:this.email.value,phone:this.phone.value||'Not provided',service:this.service.value,message:this.message.value})
+  .then(()=>{msg.style.display='block';msg.className='ok';msg.textContent='✓ Message sent! We\'ll be in touch shortly.';this.reset()})
+  .catch(()=>{msg.style.display='block';msg.className='err';msg.textContent='✗ Something went wrong. Please email us directly.'})
+  .finally(()=>{btn.disabled=false;txt.textContent='Send Message →'});
+});
+</script>
+</body>
+</html>
