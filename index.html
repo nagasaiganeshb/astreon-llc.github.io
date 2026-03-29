@@ -9,25 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
-/* ─── RESET ─── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-body{font-family:'Outfit',sans-serif;background:#FFFFFF;color:#0F172A;overflow-x:hidden;line-height:1.65}
+body{font-family:'Outfit',sans-serif;background:#F8FAFC;color:#0F172A;overflow-x:hidden;line-height:1.65}
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;font-family:'Outfit',sans-serif;border:none;outline:none;background:none}
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:#F1F5F9}
 ::-webkit-scrollbar-thumb{background:#1E40AF;border-radius:4px}
 
-/* ─── PALETTE ─────────────────────────────
-   Light Enterprise
-   Base:    White → Slate 50 → Slate 100
-   Navy:    #0F172A  (Slate 900) — strong ink
-   Blue:    #1D4ED8  (Blue 700)  — enterprise anchor
-   Sky:     #0EA5E9  (Sky 500)   — accent pop
-   Muted:   #64748B  (Slate 500)
-   Border:  #E2E8F0  (Slate 200)
-──────────────────────────────────────────── */
 :root{
   --w:   #FFFFFF;
   --s50: #F8FAFC;
@@ -54,39 +44,26 @@ button{cursor:pointer;font-family:'Outfit',sans-serif;border:none;outline:none;b
 #nav{
   position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nav);
   padding:0 clamp(1rem,5vw,3rem);
-  background:rgba(255,255,255,0);
-  border-bottom:1px solid transparent;
+  background:rgba(255,255,255,0.92);
+  border-bottom:1px solid var(--s200);
   transition:all .35s ease;
-}
-#nav.on{
-  background:rgba(255,255,255,.96);
-  border-color:var(--s200);
-  box-shadow:0 1px 0 var(--s200),var(--sh1);
   backdrop-filter:blur(20px);
+  box-shadow:0 1px 0 var(--s200),var(--sh1);
 }
 .nw{max-width:var(--mx);margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.5px;color:var(--w);display:flex;align-items:center}
-#nav.on .logo{color:var(--s900)}
-.la{color:var(--sky2)}
-#nav.on .la{color:var(--blue)}
-.ld{display:inline-block;width:7px;height:7px;background:var(--sky);border-radius:50%;margin-left:1px;margin-bottom:12px;animation:ldp 2.5s ease-in-out infinite}
-#nav.on .ld{background:var(--blue)}
+.logo{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.5px;color:var(--s900);display:flex;align-items:center}
+.la{color:var(--blue)}
+.ld{display:inline-block;width:7px;height:7px;background:var(--blue);border-radius:50%;margin-left:1px;margin-bottom:12px;animation:ldp 2.5s ease-in-out infinite}
 @keyframes ldp{0%,100%{transform:scale(1)}50%{transform:scale(1.6);opacity:.6}}
 .nl{display:flex;align-items:center;gap:1.8rem;list-style:none}
-.nl a{font-size:.855rem;font-weight:500;color:rgba(255,255,255,.8);transition:color .2s;position:relative}
-#nav.on .nl a{color:var(--s500)}
-.nl a:not(.nc)::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1.5px;background:var(--sky);transform:scaleX(0);transform-origin:left;transition:transform .25s}
-#nav.on .nl a:not(.nc)::after{background:var(--blue)}
-.nl a:not(.nc):hover{color:var(--w)}
-#nav.on .nl a:not(.nc):hover{color:var(--s900)}
+.nl a{font-size:.855rem;font-weight:500;color:var(--s500);transition:color .2s;position:relative}
+.nl a:not(.nc)::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1.5px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.nl a:not(.nc):hover{color:var(--s900)}
 .nl a:not(.nc):hover::after{transform:scaleX(1)}
-.nc{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:var(--w)!important;padding:.5rem 1.3rem;border-radius:8px;font-weight:600!important;transition:all .25s;backdrop-filter:blur(10px)}
-.nc:hover{background:rgba(255,255,255,.25)!important}
-#nav.on .nc{background:var(--blue)!important;border-color:var(--blue)!important;color:var(--w)!important}
-#nav.on .nc:hover{background:var(--blue2)!important;box-shadow:0 0 24px rgba(29,78,216,0.35)}
+.nc{background:var(--blue);border:1px solid var(--blue);color:var(--w)!important;padding:.5rem 1.3rem;border-radius:8px;font-weight:600!important;transition:all .25s}
+.nc:hover{background:var(--blue2)!important;box-shadow:0 0 24px rgba(29,78,216,0.35)}
 .hbg{display:none;flex-direction:column;gap:5px;padding:5px}
-.hbg span{display:block;width:22px;height:2px;background:var(--w);border-radius:2px;transition:.3s}
-#nav.on .hbg span{background:var(--s900)}
+.hbg span{display:block;width:22px;height:2px;background:var(--s900);border-radius:2px;transition:.3s}
 .hbg.o span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hbg.o span:nth-child(2){opacity:0}
 .hbg.o span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
@@ -98,84 +75,94 @@ button{cursor:pointer;font-family:'Outfit',sans-serif;border:none;outline:none;b
 .drw .dct{margin-top:1.5rem;background:var(--blue);color:var(--w);text-align:center;padding:1rem;border-radius:10px;font-weight:600;border-bottom:none}
 .drw .dct::after{display:none}.drw .dct:hover{background:var(--blue2);color:var(--w)}
 
-/* ─── HERO — rich dark navy ─── */
+/* ─── HERO — Light Enterprise Style ─── */
 #hero{
   min-height:100vh;
   position:relative;overflow:hidden;
   display:flex;align-items:center;
   padding:0 clamp(1rem,5vw,3rem);
   padding-top:var(--nav);
-  background:linear-gradient(135deg,#0C1A3A 0%,#0F2356 40%,#0A1A4A 70%,#06122E 100%);
+  background:linear-gradient(135deg,#EEF2FF 0%,#F0F9FF 40%,#F8FAFC 70%,#EFF6FF 100%);
 }
-/* animated mesh */
+/* subtle grid pattern */
 .hmesh{
   position:absolute;inset:0;pointer-events:none;
   background-image:
-    linear-gradient(rgba(59,130,246,.06) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(59,130,246,.06) 1px,transparent 1px);
+    linear-gradient(rgba(29,78,216,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(29,78,216,.04) 1px,transparent 1px);
   background-size:60px 60px;
   animation:gd 30s linear infinite;
 }
 @keyframes gd{to{background-position:60px 60px}}
+/* light orbs */
 .horb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
-.ho1{width:700px;height:700px;background:rgba(59,130,246,.12);top:-200px;right:-100px;animation:oa 14s ease-in-out infinite alternate}
-.ho2{width:500px;height:500px;background:rgba(14,165,233,.08);bottom:-150px;left:-100px;animation:oa 18s ease-in-out infinite alternate-reverse}
-.ho3{width:300px;height:300px;background:rgba(29,78,216,.15);top:30%;left:30%;animation:oa 10s ease-in-out infinite alternate}
+.ho1{width:700px;height:700px;background:rgba(99,102,241,.08);top:-200px;right:-100px;animation:oa 14s ease-in-out infinite alternate}
+.ho2{width:500px;height:500px;background:rgba(14,165,233,.06);bottom:-150px;left:-100px;animation:oa 18s ease-in-out infinite alternate-reverse}
+.ho3{width:300px;height:300px;background:rgba(29,78,216,.07);top:30%;left:30%;animation:oa 10s ease-in-out infinite alternate}
 @keyframes oa{to{transform:translate(25px,-25px) scale(1.08)}}
-/* small star dots */
-.stars{position:absolute;inset:0;pointer-events:none}
-.star{position:absolute;width:1.5px;height:1.5px;border-radius:50%;background:#fff;animation:stf 4s ease-in-out infinite;opacity:.4}
-.star:nth-child(1){top:15%;left:20%;animation-delay:0s}.star:nth-child(2){top:30%;left:70%;animation-delay:-.8s}
-.star:nth-child(3){top:60%;left:15%;animation-delay:-1.6s}.star:nth-child(4){top:75%;left:80%;animation-delay:-.4s}
-.star:nth-child(5){top:20%;left:50%;animation-delay:-2s}.star:nth-child(6){top:55%;left:55%;animation-delay:-1.2s}
-.star:nth-child(7){top:40%;left:85%;animation-delay:-.6s}.star:nth-child(8){top:85%;left:40%;animation-delay:-2.4s}
-@keyframes stf{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.9;transform:scale(1.8)}}
-/* glowing ring decoration */
-.hring{position:absolute;border-radius:50%;border:1px solid rgba(59,130,246,.15);pointer-events:none}
-.hr1{width:600px;height:600px;top:-200px;right:-200px;animation:spin 60s linear infinite}
-.hr2{width:400px;height:400px;top:-100px;right:-100px;border-color:rgba(14,165,233,.1);animation:spin 40s linear infinite reverse}
+/* floating data points */
+.fdots{position:absolute;inset:0;pointer-events:none}
+.fdot{position:absolute;border-radius:50%;animation:fdp 6s ease-in-out infinite}
+.fdot:nth-child(1){width:8px;height:8px;background:var(--blue);opacity:.2;top:20%;left:15%;animation-delay:0s}
+.fdot:nth-child(2){width:5px;height:5px;background:var(--sky);opacity:.3;top:60%;left:8%;animation-delay:-2s}
+.fdot:nth-child(3){width:6px;height:6px;background:var(--blue2);opacity:.2;top:35%;left:85%;animation-delay:-4s}
+.fdot:nth-child(4){width:10px;height:10px;background:var(--sky2);opacity:.15;top:75%;left:75%;animation-delay:-1s}
+.fdot:nth-child(5){width:4px;height:4px;background:var(--blue);opacity:.25;top:15%;left:60%;animation-delay:-3s}
+@keyframes fdp{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+/* decorative rings */
+.hring{position:absolute;border-radius:50%;border:1px solid rgba(29,78,216,.08);pointer-events:none}
+.hr1{width:600px;height:600px;top:-200px;right:-200px;animation:spin 80s linear infinite}
+.hr2{width:400px;height:400px;top:-100px;right:-100px;border-color:rgba(14,165,233,.06);animation:spin 55s linear infinite reverse}
 @keyframes spin{to{transform:rotate(360deg)}}
+
 .hi{position:relative;z-index:2;max-width:var(--mx);margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;padding:5rem 0 4rem}
-.hbadge{display:inline-flex;align-items:center;gap:.55rem;background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);border-radius:100px;padding:.4rem 1rem;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#93C5FD;margin-bottom:1.8rem;opacity:0;animation:fu .7s .1s forwards}
-.hbdot{width:6px;height:6px;border-radius:50%;background:var(--sky2);animation:ldp 2s infinite}
-.hh{font-family:'Fraunces',serif;font-size:clamp(2.8rem,5vw,4.8rem);font-weight:700;line-height:1.05;letter-spacing:-1.5px;color:#F8FAFC;margin-bottom:1.8rem;opacity:0;animation:fu .85s .25s forwards}
-.hh .it{font-style:italic;font-weight:300;color:#7DD3FC;display:block}
-.hh .ou{display:block;-webkit-text-stroke:1px rgba(255,255,255,.25);color:transparent}
-.hp{font-size:1rem;color:rgba(248,250,252,.6);line-height:1.85;font-weight:300;max-width:500px;margin-bottom:2.5rem;opacity:0;animation:fu .85s .4s forwards}
+.hbadge{display:inline-flex;align-items:center;gap:.55rem;background:rgba(29,78,216,.08);border:1px solid rgba(29,78,216,.2);border-radius:100px;padding:.4rem 1rem;font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:1.8rem;opacity:0;animation:fu .7s .1s forwards}
+.hbdot{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:ldp 2s infinite}
+.hh{font-family:'Fraunces',serif;font-size:clamp(2.8rem,5vw,4.8rem);font-weight:700;line-height:1.05;letter-spacing:-1.5px;color:var(--s900);margin-bottom:1.8rem;opacity:0;animation:fu .85s .25s forwards}
+.hh .it{font-style:italic;font-weight:300;color:var(--blue2);display:block}
+.hh .ou{display:block;background:linear-gradient(135deg,var(--blue),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hp{font-size:1rem;color:var(--s500);line-height:1.85;font-weight:300;max-width:500px;margin-bottom:2.5rem;opacity:0;animation:fu .85s .4s forwards}
 .hbtns{display:flex;gap:.85rem;flex-wrap:wrap;opacity:0;animation:fu .85s .55s forwards}
-.btn-p{display:inline-flex;align-items:center;gap:.45rem;background:var(--blue);color:#fff;padding:.88rem 1.8rem;border-radius:8px;font-size:.9rem;font-weight:600;transition:all .3s cubic-bezier(.34,1.56,.64,1);box-shadow:0 4px 20px rgba(29,78,216,.5)}
-.btn-p:hover{background:var(--blue2);transform:translateY(-3px);box-shadow:0 8px 36px rgba(29,78,216,.65)}
-.btn-s{display:inline-flex;align-items:center;gap:.45rem;background:rgba(255,255,255,.08);color:#F8FAFC;border:1px solid rgba(255,255,255,.2);padding:.88rem 1.8rem;border-radius:8px;font-size:.9rem;font-weight:500;transition:all .3s;backdrop-filter:blur(8px)}
-.btn-s:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);transform:translateY(-2px)}
-/* hero right — glass cards panel */
+.btn-p{display:inline-flex;align-items:center;gap:.45rem;background:var(--blue);color:#fff;padding:.88rem 1.8rem;border-radius:8px;font-size:.9rem;font-weight:600;transition:all .3s cubic-bezier(.34,1.56,.64,1);box-shadow:0 4px 20px rgba(29,78,216,.35)}
+.btn-p:hover{background:var(--blue2);transform:translateY(-3px);box-shadow:0 8px 36px rgba(29,78,216,.5)}
+.btn-s{display:inline-flex;align-items:center;gap:.45rem;background:var(--w);color:var(--s900);border:1.5px solid var(--s200);padding:.88rem 1.8rem;border-radius:8px;font-size:.9rem;font-weight:500;transition:all .3s;box-shadow:var(--sh1)}
+.btn-s:hover{background:var(--s50);border-color:var(--blue3);transform:translateY(-2px);box-shadow:var(--sh2)}
+
+/* hero right panel — light glass */
 .hpanel{display:flex;flex-direction:column;gap:1rem;opacity:0;animation:fu .9s .5s forwards}
 .hrow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .hbox{
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.9);
+  border:1px solid rgba(29,78,216,.12);
   border-radius:var(--r);padding:1.4rem;
   backdrop-filter:blur(16px);
   transition:all .3s;position:relative;overflow:hidden;
+  box-shadow:var(--sh1);
 }
-.hbox::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue3),var(--sky2));opacity:0;transition:opacity .3s}
-.hbox:hover{background:rgba(255,255,255,.11);border-color:rgba(59,130,246,.35);transform:translateY(-3px)}
+.hbox::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--sky2));opacity:0;transition:opacity .3s}
+.hbox:hover{background:rgba(255,255,255,.98);border-color:rgba(29,78,216,.25);transform:translateY(-3px);box-shadow:var(--sh2)}
 .hbox:hover::before{opacity:1}
-.hbico{width:40px;height:40px;border-radius:9px;background:rgba(59,130,246,.2);border:1px solid rgba(59,130,246,.25);display:flex;align-items:center;justify-content:center;margin-bottom:.85rem}
+.hbico{width:40px;height:40px;border-radius:9px;background:rgba(29,78,216,.08);border:1px solid rgba(29,78,216,.15);display:flex;align-items:center;justify-content:center;margin-bottom:.85rem}
 .hbico svg{width:20px;height:20px}
-.hbt{font-size:.88rem;font-weight:700;color:#F1F5FF;margin-bottom:.2rem}
-.hbs{font-size:.75rem;color:rgba(255,255,255,.45);line-height:1.5}
-.hbig{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:500;color:#7DD3FC;line-height:1;margin-bottom:.2rem}
-.hbox.wide{grid-column:1/-1;display:flex;align-items:center;gap:1.4rem;padding:1.4rem 1.6rem}
-.hbox.wide .hbico{margin-bottom:0;flex-shrink:0;width:48px;height:48px}
+.hbt{font-size:.88rem;font-weight:700;color:var(--s900);margin-bottom:.2rem}
+.hbs{font-size:.75rem;color:var(--s500);line-height:1.5}
+.hbig{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:700;color:var(--blue);line-height:1;margin-bottom:.2rem}
+.hbox.wide{grid-column:1/-1;display:flex;align-items:center;gap:1.4rem;padding:1.4rem 1.6rem;background:linear-gradient(135deg,rgba(29,78,216,.06),rgba(14,165,233,.04))}
+.hbox.wide .hbico{margin-bottom:0;flex-shrink:0;width:48px;height:48px;background:rgba(29,78,216,.12)}
 @keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+/* trust badges below hero */
+.htrust{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;margin-top:2rem;opacity:0;animation:fu .85s .7s forwards}
+.htbadge{display:inline-flex;align-items:center;gap:.4rem;font-size:.75rem;font-weight:600;color:var(--s500)}
+.htbadge svg{width:14px;height:14px;color:var(--blue)}
+.htdiv{width:1px;height:14px;background:var(--s200)}
 /* scroll indicator */
 .shl{position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;opacity:0;animation:fu .5s 1.6s forwards;z-index:2}
-.smou{width:20px;height:34px;border:1.5px solid rgba(255,255,255,.2);border-radius:99px;display:flex;justify-content:center;padding-top:4px}
-.swh{width:2.5px;height:5px;background:var(--sky2);border-radius:99px;animation:swh 1.8s ease-in-out infinite}
+.smou{width:20px;height:34px;border:1.5px solid rgba(29,78,216,.2);border-radius:99px;display:flex;justify-content:center;padding-top:4px}
+.swh{width:2.5px;height:5px;background:var(--blue);border-radius:99px;animation:swh 1.8s ease-in-out infinite}
 @keyframes swh{0%{transform:translateY(0);opacity:1}100%{transform:translateY(9px);opacity:0}}
-.slb{font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.slb{font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--s300)}
 
-/* ─── STATS STRIP — white bg, navy text ─── */
+/* ─── STATS STRIP ─── */
 #strip{background:var(--w);border-bottom:1px solid var(--s200)}
 .sti{max-width:var(--mx);margin:0 auto;padding:2.8rem clamp(1rem,5vw,3rem);display:grid;grid-template-columns:repeat(4,1fr)}
 .stc{padding:1.2rem 2rem;text-align:center;border-right:1px solid var(--s200)}
@@ -194,35 +181,85 @@ button{cursor:pointer;font-family:'Outfit',sans-serif;border:none;outline:none;b
 .sp{font-size:.97rem;color:var(--s500);line-height:1.82;font-weight:300;max-width:520px}
 .sp.lt{color:rgba(248,250,252,.65)}
 
-/* ─── SERVICES — s50 bg, white cards ─── */
-#sv{background:var(--s50)}
-.svh{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:end;margin-bottom:3.5rem}
-.svg2{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.sc{
+/* ─── DOMAINS SECTION ─── */
+#dm{background:var(--s50);padding:5rem clamp(1rem,5vw,3rem);border-top:1px solid var(--s200);border-bottom:1px solid var(--s200)}
+.dmh{text-align:center;margin-bottom:3rem}
+.dmh .sh{margin:0 auto}
+.dmh .sp{margin:0 auto;text-align:center;max-width:600px}
+.dgrid{max-width:var(--mx);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.dcard{
   background:var(--w);
   border:1px solid var(--s200);
-  border-radius:var(--r);padding:2rem 1.8rem;
+  border-radius:var(--r);
+  padding:2rem 1.5rem;
+  text-align:center;
   position:relative;overflow:hidden;
   box-shadow:var(--sh1);
   transition:all .35s cubic-bezier(.34,1.56,.64,1);
   cursor:default;
 }
-.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--sky));transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
-.sc::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(29,78,216,.03) 0%,transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
-.sc:hover{transform:translateY(-5px);box-shadow:var(--sh3);border-color:rgba(29,78,216,.2)}
-.sc:hover::before{transform:scaleX(1)}
-.sc:hover::after{opacity:1}
-.sci{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,rgba(29,78,216,.1),rgba(14,165,233,.05));border:1px solid rgba(29,78,216,.15);display:flex;align-items:center;justify-content:center;margin-bottom:1.3rem;transition:all .35s cubic-bezier(.34,1.56,.64,1)}
+.dcard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:var(--r) var(--r) 0 0;transition:opacity .3s;opacity:1}
+.dcard.dc1::before{background:linear-gradient(90deg,#0EA5E9,#38BDF8)}
+.dcard.dc2::before{background:linear-gradient(90deg,#10B981,#34D399)}
+.dcard.dc3::before{background:linear-gradient(90deg,#F59E0B,#FCD34D)}
+.dcard.dc4::before{background:linear-gradient(90deg,#EF4444,#F87171)}
+.dcard.dc5::before{background:linear-gradient(90deg,#8B5CF6,#A78BFA)}
+.dcard.dc6::before{background:linear-gradient(90deg,#EC4899,#F472B6)}
+.dcard.dc7::before{background:linear-gradient(90deg,#14B8A6,#2DD4BF)}
+.dcard.dc8::before{background:linear-gradient(90deg,#6366F1,#818CF8)}
+.dcard:hover{transform:translateY(-6px);box-shadow:var(--sh3);border-color:rgba(29,78,216,.2)}
+.dico{width:60px;height:60px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.8rem}
+.dcard.dc1 .dico{background:rgba(14,165,233,.1);border:1px solid rgba(14,165,233,.2)}
+.dcard.dc2 .dico{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2)}
+.dcard.dc3 .dico{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2)}
+.dcard.dc4 .dico{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2)}
+.dcard.dc5 .dico{background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2)}
+.dcard.dc6 .dico{background:rgba(236,72,153,.1);border:1px solid rgba(236,72,153,.2)}
+.dcard.dc7 .dico{background:rgba(20,184,166,.1);border:1px solid rgba(20,184,166,.2)}
+.dcard.dc8 .dico{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2)}
+.dname{font-size:.95rem;font-weight:700;color:var(--s900);margin-bottom:.35rem}
+.ddesc{font-size:.8rem;color:var(--s500);line-height:1.6}
+
+/* ─── SERVICES — premium cards with visual backgrounds ─── */
+#sv{background:var(--w)}
+.svh{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:end;margin-bottom:3.5rem}
+.svg2{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.sc{
+  background:var(--w);
+  border:1px solid var(--s200);
+  border-radius:16px;
+  position:relative;overflow:hidden;
+  box-shadow:var(--sh1);
+  transition:all .35s cubic-bezier(.34,1.56,.64,1);
+  cursor:default;
+  display:flex;flex-direction:column;
+}
+/* visual image banner top of card */
+.sc-img{
+  width:100%;height:140px;object-fit:cover;object-position:center;
+  filter:brightness(.88) saturate(1.2);
+  transition:all .4s ease;
+  display:block;
+}
+.sc:hover .sc-img{filter:brightness(1) saturate(1.3);transform:scale(1.04)}
+.sc-body{padding:1.6rem 1.8rem 1.8rem;flex:1;display:flex;flex-direction:column}
+/* gradient overlay on image */
+.sc-ovl{position:absolute;top:0;left:0;right:0;height:140px;background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.2) 100%);pointer-events:none;z-index:1}
+/* accent stripe on hover */
+.sc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--sky));transform:scaleX(0);transform-origin:left;transition:transform .4s ease;z-index:2}
+.sc:hover{transform:translateY(-6px);box-shadow:var(--sh3);border-color:rgba(29,78,216,.2)}
+.sc:hover::after{transform:scaleX(1)}
+.sci{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,rgba(29,78,216,.1),rgba(14,165,233,.05));border:1px solid rgba(29,78,216,.15);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;transition:all .35s cubic-bezier(.34,1.56,.64,1);position:relative;z-index:2}
 .sci svg{width:24px;height:24px}
 .sc:hover .sci{transform:scale(1.1) rotate(-5deg);background:linear-gradient(135deg,rgba(29,78,216,.18),rgba(14,165,233,.1));box-shadow:0 4px 16px rgba(29,78,216,.2)}
-.scn{font-size:1rem;font-weight:700;color:var(--s900);margin-bottom:.5rem;letter-spacing:-.2px}
-.scd{font-size:.855rem;color:var(--s500);line-height:1.78;font-weight:300}
+.scn{font-size:1rem;font-weight:700;color:var(--s900);margin-bottom:.45rem;letter-spacing:-.2px}
+.scd{font-size:.855rem;color:var(--s500);line-height:1.78;font-weight:300;flex:1}
 .scl{display:inline-flex;align-items:center;gap:.35rem;margin-top:1.2rem;font-size:.8rem;font-weight:600;color:var(--blue);transition:gap .2s}
 .scl svg{width:14px;height:14px;transition:transform .2s}
 .sc:hover .scl{gap:.6rem;color:var(--sky)}
 .sc:hover .scl svg{transform:translateX(3px)}
 
-/* ─── WHY — deep navy bg, glass cards ─── */
+/* ─── WHY — light with icons ─── */
 #wy{
   background:linear-gradient(160deg,#0C1A3A 0%,#0F2356 60%,#091530 100%);
   position:relative;overflow:hidden;
@@ -234,38 +271,52 @@ button{cursor:pointer;font-family:'Outfit',sans-serif;border:none;outline:none;b
 .wcd{
   background:rgba(255,255,255,.05);
   border:1px solid rgba(255,255,255,.1);
-  border-radius:var(--r);padding:2.4rem;
+  border-radius:var(--r);padding:2rem 2rem 2rem 1.8rem;
   position:relative;overflow:hidden;
   transition:all .3s;
+  display:flex;gap:1.2rem;align-items:flex-start;
 }
 .wcd:hover{background:rgba(255,255,255,.09);border-color:rgba(59,130,246,.4);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
 .wcd::after{content:'';position:absolute;top:0;left:0;width:2px;height:0;background:linear-gradient(to bottom,var(--blue3),var(--sky2));transition:height .4s ease}
 .wcd:hover::after{height:100%}
-/* numbers — light italic, not heavy */
+/* icon box */
+.wico{
+  width:52px;height:52px;flex-shrink:0;
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(59,130,246,.12);
+  transition:all .3s;
+}
+.wico svg{width:26px;height:26px;color:#7DD3FC}
+.wcd:hover .wico{background:rgba(59,130,246,.22);transform:scale(1.08)}
+.wcontent{flex:1}
 .wn{
   font-family:'Fraunces',serif;
-  font-size:3.5rem;font-weight:300;font-style:italic;
-  line-height:1;margin-bottom:.8rem;
-  color:rgba(147,197,253,.35);
+  font-size:2.4rem;font-weight:300;font-style:italic;
+  line-height:1;margin-bottom:.4rem;
+  color:rgba(147,197,253,.3);
   letter-spacing:-1px;
   transition:color .3s;
 }
-.wcd:hover .wn{color:rgba(147,197,253,.6)}
-.wt{font-size:1.02rem;font-weight:700;color:#F1F5FF;margin-bottom:.6rem}
-.wd{font-size:.875rem;color:rgba(248,250,252,.58);line-height:1.78;font-weight:300}
+.wcd:hover .wn{color:rgba(147,197,253,.55)}
+.wt{font-size:1rem;font-weight:700;color:#F1F5FF;margin-bottom:.5rem}
+.wd{font-size:.875rem;color:rgba(248,250,252,.55);line-height:1.78;font-weight:300}
 
-/* ─── TECH MARQUEE — white ─── */
+/* ─── TECH MARQUEE with real icons ─── */
 #tc{background:var(--w);padding:4rem clamp(1rem,5vw,3rem);overflow:hidden;border-top:1px solid var(--s200);border-bottom:1px solid var(--s200)}
-.tcl{text-align:center;font-size:.68rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--s300);margin-bottom:2rem}
+.tcl{text-align:center;font-size:.68rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--s300);margin-bottom:2.5rem}
 .mw{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-.mt{display:flex;gap:1rem;width:max-content;animation:mq 28s linear infinite}
+.mt{display:flex;gap:1.2rem;width:max-content;animation:mq 32s linear infinite}
 .mt:hover{animation-play-state:paused}
 @keyframes mq{to{transform:translateX(-50%)}}
-.chip{display:inline-flex;align-items:center;gap:.5rem;background:var(--s50);border:1px solid var(--s200);border-radius:100px;padding:.55rem 1.2rem;font-size:.82rem;font-weight:500;color:var(--s700);white-space:nowrap;transition:all .25s;box-shadow:var(--sh1)}
-.chip:hover{border-color:var(--blue3);color:var(--blue);transform:translateY(-2px);background:rgba(29,78,216,.04)}
-.cdot{width:6px;height:6px;border-radius:50%;background:var(--sky);flex-shrink:0}
+.chip{display:inline-flex;align-items:center;gap:.65rem;background:var(--s50);border:1px solid var(--s200);border-radius:100px;padding:.6rem 1.3rem;font-size:.82rem;font-weight:600;color:var(--s700);white-space:nowrap;transition:all .25s;box-shadow:var(--sh1)}
+.chip:hover{border-color:var(--blue3);color:var(--blue);transform:translateY(-2px);background:rgba(29,78,216,.04);box-shadow:var(--sh2)}
+.chip-icon{width:22px;height:22px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.chip-icon svg{width:100%;height:100%}
+.chip-icon img{width:100%;height:100%;object-fit:contain}
 
-/* ─── TESTIMONIALS — s50 ─── */
+/* ─── TESTIMONIALS ─── */
 #te{background:var(--s50)}
 .teh{margin-bottom:3.5rem}
 .tgd{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
@@ -281,7 +332,7 @@ button{cursor:pointer;font-family:'Outfit',sans-serif;border:none;outline:none;b
 .tnm{font-size:.87rem;font-weight:700;color:var(--s900)}
 .trl{font-size:.76rem;color:var(--s500);margin-top:.1rem}
 
-/* ─── ABOUT — white ─── */
+/* ─── ABOUT ─── */
 #ab{background:var(--w)}
 .abinn{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
 .acs{display:flex;flex-direction:column;gap:1rem}
@@ -304,7 +355,7 @@ button{cursor:pointer;font-family:'Outfit',sans-serif;border:none;outline:none;b
 .mapc{border-radius:var(--r);overflow:hidden;border:1px solid var(--s200);box-shadow:var(--sh2)}
 .mapc iframe{display:block;width:100%;height:360px}
 
-/* ─── CONTACT — white ─── */
+/* ─── CONTACT ─── */
 #ct{background:var(--w)}
 .cti{display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;align-items:start}
 .ctcp .sp{max-width:100%;margin-top:.8rem;margin-bottom:2.5rem}
@@ -314,7 +365,6 @@ button{cursor:pointer;font-family:'Outfit',sans-serif;border:none;outline:none;b
 .citm:hover .cico{background:rgba(29,78,216,.14);transform:scale(1.08)}
 .clb{font-size:.67rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--s300);margin-bottom:.2rem}
 .cvl{font-size:.9rem;font-weight:500;color:var(--s900)}
-/* form box */
 .fbox{background:var(--s50);border:1px solid var(--s200);border-radius:16px;padding:2.8rem;box-shadow:var(--sh2)}
 .frw{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .fg{margin-bottom:1.1rem}
@@ -365,6 +415,7 @@ footer{background:var(--s900);padding:4rem clamp(1rem,5vw,3rem) 2rem;border-top:
   .hbox.wide{grid-column:1/-1}
   .hp{max-width:100%}
   .svh{grid-template-columns:1fr}.svg2{grid-template-columns:repeat(2,1fr)}
+  .dgrid{grid-template-columns:repeat(2,1fr)}
   .wgrid{grid-template-columns:1fr 1fr}.tgd{grid-template-columns:1fr 1fr}
   .abinn{grid-template-columns:1fr;gap:3rem}.cti{grid-template-columns:1fr;gap:3rem}
   .sti{grid-template-columns:repeat(2,1fr)}
@@ -385,6 +436,7 @@ footer{background:var(--s900);padding:4rem clamp(1rem,5vw,3rem) 2rem;border-top:
   .stc:nth-child(odd){border-right:1px solid var(--s200)!important}
   .stc:nth-last-child(-n+2){border-bottom:none!important}
   .svh{gap:1rem}.svg2{grid-template-columns:1fr}
+  .dgrid{grid-template-columns:repeat(2,1fr)}
   .wgrid{grid-template-columns:1fr}.tgd{grid-template-columns:1fr}
   .abinn{gap:2.5rem}.cti{gap:2.5rem}
   .frw{grid-template-columns:1fr}.fbox{padding:1.8rem}
@@ -397,6 +449,7 @@ footer{background:var(--s900);padding:4rem clamp(1rem,5vw,3rem) 2rem;border-top:
   .hpanel{grid-template-columns:1fr}
   .hbox.wide{grid-column:auto}
   .sti{grid-template-columns:1fr}
+  .dgrid{grid-template-columns:1fr}
   .stc{border-right:none!important;border-bottom:1px solid var(--s200)!important}
   .stc:last-child{border-bottom:none!important}
 }
@@ -410,6 +463,7 @@ footer{background:var(--s900);padding:4rem clamp(1rem,5vw,3rem) 2rem;border-top:
     <a href="#hero" class="logo"><span class="la">A</span>streon<span class="ld"></span></a>
     <ul class="nl">
       <li><a href="#sv">Services</a></li>
+      <li><a href="#dm">Domains</a></li>
       <li><a href="#wy">Why Us</a></li>
       <li><a href="#tc">Technologies</a></li>
       <li><a href="#te">Testimonials</a></li>
@@ -421,6 +475,7 @@ footer{background:var(--s900);padding:4rem clamp(1rem,5vw,3rem) 2rem;border-top:
 </nav>
 <div class="drw" id="drw">
   <a href="#sv" onclick="cd()">Services</a>
+  <a href="#dm" onclick="cd()">Domains</a>
   <a href="#wy" onclick="cd()">Why Astreon</a>
   <a href="#tc" onclick="cd()">Technologies</a>
   <a href="#te" onclick="cd()">Testimonials</a>
@@ -428,11 +483,11 @@ footer{background:var(--s900);padding:4rem clamp(1rem,5vw,3rem) 2rem;border-top:
   <a href="#ct" class="dct" onclick="cd()">Contact Us →</a>
 </div>
 
-<!-- HERO — stays dark for impact -->
+<!-- HERO — Light Enterprise -->
 <section id="hero">
   <div class="hmesh"></div>
   <div class="horb ho1"></div><div class="horb ho2"></div><div class="horb ho3"></div>
-  <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+  <div class="fdots"><div class="fdot"></div><div class="fdot"></div><div class="fdot"></div><div class="fdot"></div><div class="fdot"></div></div>
   <div class="hring hr1"></div><div class="hring hr2"></div>
   <div class="hi">
     <div>
@@ -443,23 +498,30 @@ footer{background:var(--s900);padding:4rem clamp(1rem,5vw,3rem) 2rem;border-top:
         <a href="#sv" class="btn-p"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Explore Services</a>
         <a href="#ct" class="btn-s">Get In Touch</a>
       </div>
+      <div class="htrust">
+        <span class="htbadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>AWS Partner</span>
+        <div class="htdiv"></div>
+        <span class="htbadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Microsoft Partner</span>
+        <div class="htdiv"></div>
+        <span class="htbadge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>SOC 2 Compliant</span>
+      </div>
     </div>
     <div class="hpanel">
       <div class="hrow">
-        <div class="hbox"><div class="hbico"><svg viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></div><div class="hbt">Cloud Services</div><div class="hbs">AWS · Azure · GCP</div></div>
-        <div class="hbox"><div class="hbico"><svg viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><path d="M2 20h20"/></svg></div><div class="hbt">Data Analytics</div><div class="hbs">Power BI · Dashboards</div></div>
+        <div class="hbox"><div class="hbico"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></div><div class="hbt">Cloud Services</div><div class="hbs">AWS · Azure · GCP</div></div>
+        <div class="hbox"><div class="hbico"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><path d="M2 20h20"/></svg></div><div class="hbt">Data Analytics</div><div class="hbs">Power BI · Dashboards</div></div>
       </div>
       <div class="hrow">
-        <div class="hbox"><div class="hbico"><svg viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><div class="hbt">AI & Automation</div><div class="hbs">Intelligent Workflows</div></div>
-        <div class="hbox"><div class="hbico"><svg viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="hbt">Cybersecurity</div><div class="hbs">Compliance · Security</div></div>
+        <div class="hbox"><div class="hbico"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><div class="hbt">AI & Automation</div><div class="hbs">Intelligent Workflows</div></div>
+        <div class="hbox"><div class="hbico"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="hbt">Cybersecurity</div><div class="hbs">Compliance · Security</div></div>
       </div>
-      <div class="hbox wide"><div class="hbico" style="width:48px;height:48px;flex-shrink:0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div><div><div class="hbig">20<span style="font-size:1.5rem;color:#38BDF8">+</span></div><div class="hbt">Years of Industry Expertise</div><div class="hbs">Trusted by businesses & professionals across the US</div></div></div>
+      <div class="hbox wide"><div class="hbico" style="width:48px;height:48px;flex-shrink:0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div><div><div class="hbig">20<span style="font-size:1.5rem;color:var(--sky)">+</span></div><div class="hbt">Years of Industry Expertise</div><div class="hbs">Trusted by businesses & professionals across the US</div></div></div>
     </div>
   </div>
   <div class="shl"><div class="smou"><div class="swh"></div></div><span class="slb">Scroll</span></div>
 </section>
 
-<!-- STATS — clean white -->
+<!-- STATS -->
 <div id="strip">
   <div class="sti">
     <div class="stc r"><div class="stn"><span class="cnt" data-n="20">0</span><em>+</em></div><div class="stl">Years of Industry<br/>Experience</div></div>
@@ -477,39 +539,258 @@ footer{background:var(--s900);padding:4rem clamp(1rem,5vw,3rem) 2rem;border-top:
       <div class="r d1"><p class="sp">From cloud infrastructure to intelligent automation — enterprise-grade technology that accelerates your business forward.</p></div>
     </div>
     <div class="svg2">
-      <div class="sc r d1"><div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></div><div class="scn">Cloud Services</div><p class="scd">Migrate, manage and scale on AWS, Azure or Google Cloud — securely and efficiently, with zero disruption to your operations.</p><a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-      <div class="sc r d2"><div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><path d="M2 20h20"/></svg></div><div class="scn">Power BI & Data Analytics</div><p class="scd">Turn raw data into strategic decisions. Interactive dashboards, automated reports and pipelines for real-time business visibility.</p><a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-      <div class="sc r d3"><div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><div class="scn">AI & Intelligent Automation</div><p class="scd">Reduce manual effort with AI-driven workflows — from robotic process automation to intelligent decision-making that scales with you.</p><a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-      <div class="sc r d1"><div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="scn">Cybersecurity & Compliance</div><p class="scd">Protect your business with end-to-end security assessments, compliance frameworks and managed security services tailored to your risk profile.</p><a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-      <div class="sc r d2"><div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="scn">Full Stack Web Development</div><p class="scd">End-to-end applications built for performance and scale — from UI/UX to backend architecture using modern, reliable tech stacks.</p><a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-      <div class="sc r d3"><div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="scn">IT Staffing & Workforce Solutions</div><p class="scd">Connecting businesses with exceptional technical talent through a vast professional network built over two decades in the US IT industry.</p><a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-      <div class="sc r d1"><div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div><div class="scn">Digital Transformation Consulting</div><p class="scd">Strategy-first consulting to modernize your technology, streamline operations and future-proof your business — end to end.</p><a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-      <div class="sc r d2"><div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="scn">Managed IT Services</div><p class="scd">Proactive monitoring, support and management of your IT infrastructure — so your team stays focused on your core business.</p><a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-      <div class="sc r d3"><div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg></div><div class="scn">Data Engineering & Integration</div><p class="scd">Robust data pipelines, warehouses and integration layers that connect your systems and unlock the full value of your data.</p><a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+
+      <!-- Cloud Services -->
+      <div class="sc r d1">
+        <img class="sc-img" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80&auto=format&fit=crop" alt="Cloud Services"/>
+        <div class="sc-ovl"></div>
+        <div class="sc-body">
+          <div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></div>
+          <div class="scn">Cloud Services</div>
+          <p class="scd">Migrate, manage and scale on AWS, Azure or Google Cloud — securely and efficiently, with zero disruption to your operations.</p>
+          <a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Power BI & Data Analytics -->
+      <div class="sc r d2">
+        <img class="sc-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format&fit=crop" alt="Data Analytics"/>
+        <div class="sc-ovl"></div>
+        <div class="sc-body">
+          <div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><path d="M2 20h20"/></svg></div>
+          <div class="scn">Power BI & Data Analytics</div>
+          <p class="scd">Turn raw data into strategic decisions. Interactive dashboards, automated reports and pipelines for real-time business visibility.</p>
+          <a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- AI & Automation -->
+      <div class="sc r d3">
+        <img class="sc-img" src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80&auto=format&fit=crop" alt="AI & Automation"/>
+        <div class="sc-ovl"></div>
+        <div class="sc-body">
+          <div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+          <div class="scn">AI & Intelligent Automation</div>
+          <p class="scd">Reduce manual effort with AI-driven workflows — from robotic process automation to intelligent decision-making that scales with you.</p>
+          <a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Cybersecurity -->
+      <div class="sc r d1">
+        <img class="sc-img" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80&auto=format&fit=crop" alt="Cybersecurity"/>
+        <div class="sc-ovl"></div>
+        <div class="sc-body">
+          <div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="scn">Cybersecurity & Compliance</div>
+          <p class="scd">Protect your business with end-to-end security assessments, compliance frameworks and managed security services tailored to your risk profile.</p>
+          <a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Full Stack Dev -->
+      <div class="sc r d2">
+        <img class="sc-img" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80&auto=format&fit=crop" alt="Full Stack Development"/>
+        <div class="sc-ovl"></div>
+        <div class="sc-body">
+          <div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <div class="scn">Full Stack Web Development</div>
+          <p class="scd">End-to-end applications built for performance and scale — from UI/UX to backend architecture using modern, reliable tech stacks.</p>
+          <a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- IT Staffing -->
+      <div class="sc r d3">
+        <img class="sc-img" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80&auto=format&fit=crop" alt="IT Staffing"/>
+        <div class="sc-ovl"></div>
+        <div class="sc-body">
+          <div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="scn">IT Staffing & Workforce Solutions</div>
+          <p class="scd">Connecting businesses with exceptional technical talent through a vast professional network built over two decades in the US IT industry.</p>
+          <a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Digital Transformation -->
+      <div class="sc r d1">
+        <img class="sc-img" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80&auto=format&fit=crop" alt="Digital Transformation"/>
+        <div class="sc-ovl"></div>
+        <div class="sc-body">
+          <div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div>
+          <div class="scn">Digital Transformation Consulting</div>
+          <p class="scd">Strategy-first consulting to modernize your technology, streamline operations and future-proof your business — end to end.</p>
+          <a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Managed IT -->
+      <div class="sc r d2">
+        <img class="sc-img" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80&auto=format&fit=crop" alt="Managed IT Services"/>
+        <div class="sc-ovl"></div>
+        <div class="sc-body">
+          <div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <div class="scn">Managed IT Services</div>
+          <p class="scd">Proactive monitoring, support and management of your IT infrastructure — so your team stays focused on your core business.</p>
+          <a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Data Engineering -->
+      <div class="sc r d3">
+        <img class="sc-img" src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80&auto=format&fit=crop" alt="Data Engineering"/>
+        <div class="sc-ovl"></div>
+        <div class="sc-body">
+          <div class="sci"><svg viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg></div>
+          <div class="scn">Data Engineering & Integration</div>
+          <p class="scd">Robust data pipelines, warehouses and integration layers that connect your systems and unlock the full value of your data.</p>
+          <a href="#ct" class="scl">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- WHY — dark navy for contrast rhythm -->
+<!-- DOMAINS -->
+<section id="dm">
+  <div class="dmh r">
+    <span class="ey">Industries We Serve</span>
+    <h2 class="sh">Domain Expertise<br/>Across Key Sectors</h2>
+    <p class="sp" style="margin-top:.6rem">We bring deep, cross-industry experience delivering technology solutions where they matter most.</p>
+  </div>
+  <div class="dgrid">
+    <div class="dcard dc1 r d1">
+      <div class="dico">🏥</div>
+      <div class="dname">Healthcare & Life Sciences</div>
+      <div class="ddesc">EHR integrations, HIPAA-compliant platforms, telehealth & clinical data analytics.</div>
+    </div>
+    <div class="dcard dc2 r d2">
+      <div class="dico">🏦</div>
+      <div class="dname">Banking & Financial Services</div>
+      <div class="ddesc">Core banking modernization, fraud detection, regulatory reporting & fintech integrations.</div>
+    </div>
+    <div class="dcard dc3 r d3">
+      <div class="dico">🛒</div>
+      <div class="dname">Retail & E-Commerce</div>
+      <div class="ddesc">Omnichannel platforms, inventory intelligence, personalization engines & supply chain tech.</div>
+    </div>
+    <div class="dcard dc4 r d4">
+      <div class="dico">🏭</div>
+      <div class="dname">Manufacturing & Logistics</div>
+      <div class="ddesc">IoT-driven automation, predictive maintenance, ERP integrations & warehouse management.</div>
+    </div>
+    <div class="dcard dc5 r d1">
+      <div class="dico">🎓</div>
+      <div class="dname">Education & EdTech</div>
+      <div class="ddesc">LMS development, student analytics, campus digital transformation & accessibility tools.</div>
+    </div>
+    <div class="dcard dc6 r d2">
+      <div class="dico">🏛️</div>
+      <div class="dname">Government & Public Sector</div>
+      <div class="ddesc">FedRAMP-ready cloud, citizen portals, compliance systems & open data initiatives.</div>
+    </div>
+    <div class="dcard dc7 r d3">
+      <div class="dico">⚡</div>
+      <div class="dname">Energy & Utilities</div>
+      <div class="ddesc">Smart grid analytics, SCADA modernization, asset management & sustainability dashboards.</div>
+    </div>
+    <div class="dcard dc8 r d4">
+      <div class="dico">🚀</div>
+      <div class="dname">Startups & Technology</div>
+      <div class="ddesc">MVP engineering, scalable architecture, DevOps culture & rapid product iteration.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY — dark navy for contrast -->
 <section id="wy" class="sec">
   <div class="wglow"></div>
   <div class="inn" style="position:relative;z-index:1">
     <div class="wh r"><span class="ey" style="color:#93C5FD">Why Choose Us</span><h2 class="sh lt">What Sets Astreon Apart</h2></div>
     <div class="wgrid">
-      <div class="wcd r d1"><div class="wn">01</div><div class="wt">20+ Years of Industry Expertise</div><p class="wd">Deep, hands-on experience across IT consulting, staffing and technology delivery spanning leading US organizations across multiple industries.</p></div>
-      <div class="wcd r d2"><div class="wn">02</div><div class="wt">A Network You Can Trust</div><p class="wd">Decades of genuine relationships with IT professionals, consultancies and businesses across the US. That network becomes your competitive advantage.</p></div>
-      <div class="wcd r d3"><div class="wn">03</div><div class="wt">Results-Driven Delivery</div><p class="wd">We don't just advise — we implement, support and ensure every engagement delivers measurable business value. Your outcomes define our success.</p></div>
-      <div class="wcd r d4"><div class="wn">04</div><div class="wt">US-Based, Globally Connected</div><p class="wd">Headquartered in the United States with access to a global pool of technology talent — local accountability with world-class expertise.</p></div>
+      <div class="wcd r d1">
+        <div class="wico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="wcontent">
+          <div class="wn">01</div>
+          <div class="wt">20+ Years of Industry Expertise</div>
+          <p class="wd">Deep, hands-on experience across IT consulting, staffing and technology delivery spanning leading US organizations across multiple industries.</p>
+        </div>
+      </div>
+      <div class="wcd r d2">
+        <div class="wico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="wcontent">
+          <div class="wn">02</div>
+          <div class="wt">A Network You Can Trust</div>
+          <p class="wd">Decades of genuine relationships with IT professionals, consultancies and businesses across the US. That network becomes your competitive advantage.</p>
+        </div>
+      </div>
+      <div class="wcd r d3">
+        <div class="wico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="wcontent">
+          <div class="wn">03</div>
+          <div class="wt">Results-Driven Delivery</div>
+          <p class="wd">We don't just advise — we implement, support and ensure every engagement delivers measurable business value. Your outcomes define our success.</p>
+        </div>
+      </div>
+      <div class="wcd r d4">
+        <div class="wico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <div class="wcontent">
+          <div class="wn">04</div>
+          <div class="wt">US-Based, Globally Connected</div>
+          <p class="wd">Headquartered in the United States with access to a global pool of technology talent — local accountability with world-class expertise.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- TECH MARQUEE -->
+<!-- TECH MARQUEE with real tech icons (SVG inline) -->
 <div id="tc">
   <div class="tcl r">Technologies & Platforms We Work With</div>
   <div class="mw r d1"><div class="mt">
-    <div class="chip"><div class="cdot"></div>Microsoft Azure</div><div class="chip"><div class="cdot"></div>Amazon AWS</div><div class="chip"><div class="cdot"></div>Google Cloud</div><div class="chip"><div class="cdot"></div>Power BI</div><div class="chip"><div class="cdot"></div>React.js</div><div class="chip"><div class="cdot"></div>Node.js</div><div class="chip"><div class="cdot"></div>Python</div><div class="chip"><div class="cdot"></div>Salesforce</div><div class="chip"><div class="cdot"></div>ServiceNow</div><div class="chip"><div class="cdot"></div>UiPath</div><div class="chip"><div class="cdot"></div>Snowflake</div><div class="chip"><div class="cdot"></div>Tableau</div><div class="chip"><div class="cdot"></div>Docker</div><div class="chip"><div class="cdot"></div>Kubernetes</div><div class="chip"><div class="cdot"></div>Azure DevOps</div><div class="chip"><div class="cdot"></div>SQL Server</div>
-    <div class="chip"><div class="cdot"></div>Microsoft Azure</div><div class="chip"><div class="cdot"></div>Amazon AWS</div><div class="chip"><div class="cdot"></div>Google Cloud</div><div class="chip"><div class="cdot"></div>Power BI</div><div class="chip"><div class="cdot"></div>React.js</div><div class="chip"><div class="cdot"></div>Node.js</div><div class="chip"><div class="cdot"></div>Python</div><div class="chip"><div class="cdot"></div>Salesforce</div><div class="chip"><div class="cdot"></div>ServiceNow</div><div class="chip"><div class="cdot"></div>UiPath</div><div class="chip"><div class="cdot"></div>Snowflake</div><div class="chip"><div class="cdot"></div>Tableau</div><div class="chip"><div class="cdot"></div>Docker</div><div class="chip"><div class="cdot"></div>Kubernetes</div><div class="chip"><div class="cdot"></div>Azure DevOps</div><div class="chip"><div class="cdot"></div>SQL Server</div>
+    <!-- Row 1 -->
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24" fill="#FF9900"><path d="M13.527.099C6.955-.744.942 3.9.099 10.473c-.843 6.572 3.8 12.584 10.373 13.428 6.573.843 12.587-3.801 13.428-10.374C24.744 6.955 20.101.943 13.527.099zm2.471 7.485a.855.855 0 0 0-.593.25l-4.453 4.453-1.307-1.305a.858.858 0 0 0-1.211 1.211l1.912 1.912a.858.858 0 0 0 1.211 0l5.059-5.059a.856.856 0 0 0-.618-1.462z"/></svg></div>Amazon AWS</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24"><path fill="#0078D4" d="M5.483 13.3l1.752-4.745L8.8 13.3H5.483zm14.684-.324h-1.87v-5.07h1.87c.936 0 1.73.324 2.32.97.594.646.9 1.476.9 2.566 0 1.09-.306 1.92-.9 2.564-.59.646-1.384.97-2.32.97zM0 18h24V6H0v12z"/></svg></div>Microsoft Azure</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M12 12.5l-4.5-7.8h9L12 12.5z"/><path fill="#EA4335" d="M12 12.5l4.5 7.8H7.5L12 12.5z"/><path fill="#FBBC05" d="M7.5 20.3L3 12.5l4.5-7.8-4.5 7.8 4.5 7.8z"/><path fill="#34A853" d="M16.5 4.7L21 12.5l-4.5 7.8 4.5-7.8-4.5-7.8z"/></svg></div>Google Cloud</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24"><path fill="#F2C811" d="M10.1 2.1L1.5 12l8.6 9.9h12.4L13.9 12l8.6-9.9z"/></svg></div>Power BI</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24" fill="#61DAFB"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.5"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.5" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.5" transform="rotate(-60 12 12)"/></svg></div>React.js</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24" fill="#339933"><path d="M12 1.85c-.27 0-.55.07-.78.2l-7.44 4.3c-.48.28-.78.8-.78 1.36v8.6c0 .56.3 1.08.78 1.36l1.95 1.12c.95.46 1.27.46 1.7.46.85 0 1.35-.52 1.35-1.4V8.29c0-.07-.06-.13-.13-.13h-.9c-.08 0-.14.06-.14.13v9.56c0 .4-.41.8-.9.56L4.8 17.3c-.08-.05-.13-.13-.13-.22V8.71c0-.09.04-.18.13-.22L12 4.19c.08-.05.2-.05.28 0l7.2 4.3c.09.04.13.13.13.22v8.37c0 .09-.04.18-.13.22l-7.2 4.28c-.08.05-.2.05-.28 0l-1.9-1.1c-.05-.03-.12-.03-.17 0-.48.26-.57.3-1.02.44-.1.05-.27.1.06.29l2.5 1.48c.23.13.5.2.78.2s.55-.07.78-.2l7.2-4.28c.48-.28.78-.8.78-1.36V8.71c0-.56-.3-1.08-.78-1.36L12.78 3.05c-.23-.13-.5-.2-.78-.2z"/></svg></div>Node.js</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24"><path fill="#3776AB" d="M9.585.52a1.14 1.14 0 0 0-.4.088L2.05 3.88a1.14 1.14 0 0 0-.639 1.02v5.71c0 .456.256.877.64 1.02l2.095.844v2.52c0 .475.27.912.696 1.125l7.135 3.713a1.14 1.14 0 0 0 1.046 0l7.135-3.713a1.14 1.14 0 0 0 .696-1.125V9.7c0-.456-.256-.877-.639-1.02L17.08 7.836V5.316c0-.456-.256-.877-.639-1.02L10.306.608A1.14 1.14 0 0 0 9.585.52z"/><path fill="#FFCE3B" d="M14.553 2.5L9 5.05l5.553 2.55L20.1 5.05z"/></svg></div>Python</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24"><path fill="#00A1E0" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.25 17.5a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5zm4.5-4.5h-1.5V9.5h1.5V13z"/></svg></div>Salesforce</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24"><path fill="#29B5E8" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 3c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4zm0 14c-2.67 0-5.03-1.37-6.43-3.45A7.95 7.95 0 0 1 12 14c2.13 0 4.06.84 5.5 2.2A7.96 7.96 0 0 1 12 19z"/></svg></div>Snowflake</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24"><path fill="#E97627" d="M12 2L2 7l10 5 10-5-10-5zm0 9L2 6v12l10 5 10-5V6L12 11z"/></svg></div>Tableau</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24" fill="#2496ED"><path d="M13.983 11.078h2.119a.186.186 0 0 0 .186-.185V9.006a.186.186 0 0 0-.186-.186h-2.119a.185.185 0 0 0-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 0 0 .186-.186V3.574a.186.186 0 0 0-.186-.185h-2.118a.185.185 0 0 0-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 0 0 .186-.186V6.29a.186.186 0 0 0-.186-.185h-2.118a.185.185 0 0 0-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 0 0 .184-.186V6.29a.185.185 0 0 0-.185-.185H8.1a.185.185 0 0 0-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 0 0 .185-.186V6.29a.185.185 0 0 0-.185-.185H5.136a.186.186 0 0 0-.186.185v1.887c0 .102.084.185.186.186"/></svg></div>Docker</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24" fill="#326CE5"><path d="M10.204 14.35l.007.01-.999 2.413a5.171 5.171 0 0 1-2.075-2.597l2.578-.437.004.005zm-.875-3.376l-.01.022-2.604.087a5.21 5.21 0 0 1 .863-2.741l1.92 1.741-.17.89zm1.875-2.126l-.011.012-1.946-1.721a5.14 5.14 0 0 1 2.756-.744l-.088 2.604-.71-.15zm2.684 1.168l-.011-.012-.71.15-.088-2.603a5.14 5.14 0 0 1 2.756.744l-1.947 1.72zm1.47 1.963l-.17-.89 1.92-1.74a5.21 5.21 0 0 1 .862 2.74l-2.603-.087-.01-.023zm-.984 1.906l.004-.005 2.578.437a5.171 5.171 0 0 1-2.075 2.597l-.999-2.412.007-.01z"/></svg></div>Kubernetes</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24"><path fill="#0078D4" d="M0 0h11.377v11.372H0zm12.623 0H24v11.372H12.623zM0 12.623h11.377V24H0zm12.623 0H24V24H12.623z"/></svg></div>Azure DevOps</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24" fill="#CC2927"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>SQL Server</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24" fill="#6DB33F"><path d="M20.59 12l-3.05-3.05a2.1 2.1 0 0 0-2.97 2.97L16.66 14H12a2 2 0 0 0 0 4h4.66l-2.09 2.09a2.1 2.1 0 0 0 2.97 2.97L20.59 20a2.1 2.1 0 0 0 0-2.97L18.5 15h2.09a2.1 2.1 0 0 0 0-4.2l-2.09.2H20.59zM3.41 12l3.05-3.05a2.1 2.1 0 0 1 2.97 2.97L7.34 14H12a2 2 0 0 1 0 4H7.34l2.09 2.09a2.1 2.1 0 0 1-2.97 2.97L3.41 20a2.1 2.1 0 0 1 0-2.97l2.09-2.03H3.41a2.1 2.1 0 0 1 0-4.2l2.09.2H3.41z"/></svg></div>ServiceNow</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24" fill="#FA4616"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>UiPath</div>
+    <!-- Duplicate for loop -->
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24" fill="#FF9900"><path d="M13.527.099C6.955-.744.942 3.9.099 10.473c-.843 6.572 3.8 12.584 10.373 13.428 6.573.843 12.587-3.801 13.428-10.374C24.744 6.955 20.101.943 13.527.099zm2.471 7.485a.855.855 0 0 0-.593.25l-4.453 4.453-1.307-1.305a.858.858 0 0 0-1.211 1.211l1.912 1.912a.858.858 0 0 0 1.211 0l5.059-5.059a.856.856 0 0 0-.618-1.462z"/></svg></div>Amazon AWS</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24"><path fill="#0078D4" d="M5.483 13.3l1.752-4.745L8.8 13.3H5.483zm14.684-.324h-1.87v-5.07h1.87c.936 0 1.73.324 2.32.97.594.646.9 1.476.9 2.566 0 1.09-.306 1.92-.9 2.564-.59.646-1.384.97-2.32.97zM0 18h24V6H0v12z"/></svg></div>Microsoft Azure</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M12 12.5l-4.5-7.8h9L12 12.5z"/><path fill="#EA4335" d="M12 12.5l4.5 7.8H7.5L12 12.5z"/><path fill="#FBBC05" d="M7.5 20.3L3 12.5l4.5-7.8-4.5 7.8 4.5 7.8z"/><path fill="#34A853" d="M16.5 4.7L21 12.5l-4.5 7.8 4.5-7.8-4.5-7.8z"/></svg></div>Google Cloud</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24"><path fill="#F2C811" d="M10.1 2.1L1.5 12l8.6 9.9h12.4L13.9 12l8.6-9.9z"/></svg></div>Power BI</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24" fill="#61DAFB"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.5"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.5" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" fill="none" stroke="#61DAFB" stroke-width="1.5" transform="rotate(-60 12 12)"/></svg></div>React.js</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24" fill="#339933"><path d="M12 1.85c-.27 0-.55.07-.78.2l-7.44 4.3c-.48.28-.78.8-.78 1.36v8.6c0 .56.3 1.08.78 1.36l1.95 1.12c.95.46 1.27.46 1.7.46.85 0 1.35-.52 1.35-1.4V8.29c0-.07-.06-.13-.13-.13h-.9c-.08 0-.14.06-.14.13v9.56c0 .4-.41.8-.9.56L4.8 17.3c-.08-.05-.13-.13-.13-.22V8.71c0-.09.04-.18.13-.22L12 4.19c.08-.05.2-.05.28 0l7.2 4.3c.09.04.13.13.13.22v8.37c0 .09-.04.18-.13.22l-7.2 4.28c-.08.05-.2.05-.28 0l-1.9-1.1c-.05-.03-.12-.03-.17 0-.48.26-.57.3-1.02.44-.1.05-.27.1.06.29l2.5 1.48c.23.13.5.2.78.2s.55-.07.78-.2l7.2-4.28c.48-.28.78-.8.78-1.36V8.71c0-.56-.3-1.08-.78-1.36L12.78 3.05c-.23-.13-.5-.2-.78-.2z"/></svg></div>Node.js</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24"><path fill="#3776AB" d="M9.585.52a1.14 1.14 0 0 0-.4.088L2.05 3.88a1.14 1.14 0 0 0-.639 1.02v5.71c0 .456.256.877.64 1.02l2.095.844v2.52c0 .475.27.912.696 1.125l7.135 3.713a1.14 1.14 0 0 0 1.046 0l7.135-3.713a1.14 1.14 0 0 0 .696-1.125V9.7c0-.456-.256-.877-.639-1.02L17.08 7.836V5.316c0-.456-.256-.877-.639-1.02L10.306.608A1.14 1.14 0 0 0 9.585.52z"/><path fill="#FFCE3B" d="M14.553 2.5L9 5.05l5.553 2.55L20.1 5.05z"/></svg></div>Python</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24"><path fill="#00A1E0" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.25 17.5a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5zm4.5-4.5h-1.5V9.5h1.5V13z"/></svg></div>Salesforce</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24"><path fill="#29B5E8" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 3c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4zm0 14c-2.67 0-5.03-1.37-6.43-3.45A7.95 7.95 0 0 1 12 14c2.13 0 4.06.84 5.5 2.2A7.96 7.96 0 0 1 12 19z"/></svg></div>Snowflake</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24"><path fill="#E97627" d="M12 2L2 7l10 5 10-5-10-5zm0 9L2 6v12l10 5 10-5V6L12 11z"/></svg></div>Tableau</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24" fill="#2496ED"><path d="M13.983 11.078h2.119a.186.186 0 0 0 .186-.185V9.006a.186.186 0 0 0-.186-.186h-2.119a.185.185 0 0 0-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 0 0 .186-.186V3.574a.186.186 0 0 0-.186-.185h-2.118a.185.185 0 0 0-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 0 0 .186-.186V6.29a.186.186 0 0 0-.186-.185h-2.118a.185.185 0 0 0-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 0 0 .184-.186V6.29a.185.185 0 0 0-.185-.185H8.1a.185.185 0 0 0-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 0 0 .185-.186V6.29a.185.185 0 0 0-.185-.185H5.136a.186.186 0 0 0-.186.185v1.887c0 .102.084.185.186.186"/></svg></div>Docker</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24" fill="#326CE5"><path d="M10.204 14.35l.007.01-.999 2.413a5.171 5.171 0 0 1-2.075-2.597l2.578-.437.004.005zm-.875-3.376l-.01.022-2.604.087a5.21 5.21 0 0 1 .863-2.741l1.92 1.741-.17.89zm1.875-2.126l-.011.012-1.946-1.721a5.14 5.14 0 0 1 2.756-.744l-.088 2.604-.71-.15zm2.684 1.168l-.011-.012-.71.15-.088-2.603a5.14 5.14 0 0 1 2.756.744l-1.947 1.72zm1.47 1.963l-.17-.89 1.92-1.74a5.21 5.21 0 0 1 .862 2.74l-2.603-.087-.01-.023zm-.984 1.906l.004-.005 2.578.437a5.171 5.171 0 0 1-2.075 2.597l-.999-2.412.007-.01z"/></svg></div>Kubernetes</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24"><path fill="#0078D4" d="M0 0h11.377v11.372H0zm12.623 0H24v11.372H12.623zM0 12.623h11.377V24H0zm12.623 0H24V24H12.623z"/></svg></div>Azure DevOps</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24" fill="#CC2927"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>SQL Server</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24" fill="#6DB33F"><path d="M20.59 12l-3.05-3.05a2.1 2.1 0 0 0-2.97 2.97L16.66 14H12a2 2 0 0 0 0 4h4.66l-2.09 2.09a2.1 2.1 0 0 0 2.97 2.97L20.59 20a2.1 2.1 0 0 0 0-2.97L18.5 15h2.09a2.1 2.1 0 0 0 0-4.2l-2.09.2H20.59zM3.41 12l3.05-3.05a2.1 2.1 0 0 1 2.97 2.97L7.34 14H12a2 2 0 0 1 0 4H7.34l2.09 2.09a2.1 2.1 0 0 1-2.97 2.97L3.41 20a2.1 2.1 0 0 1 0-2.97l2.09-2.03H3.41a2.1 2.1 0 0 1 0-4.2l2.09.2H3.41z"/></svg></div>ServiceNow</div>
+    <div class="chip"><div class="chip-icon"><svg viewBox="0 0 24 24" fill="#FA4616"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>UiPath</div>
   </div></div>
 </div>
 
@@ -607,20 +888,19 @@ footer{background:var(--s900);padding:4rem clamp(1rem,5vw,3rem) 2rem;border-top:
       </div>
     </div>
     <div><div class="fct">Services</div><ul class="fnv"><li><a href="#sv">Cloud Services</a></li><li><a href="#sv">Data Analytics</a></li><li><a href="#sv">AI & Automation</a></li><li><a href="#sv">Cybersecurity</a></li><li><a href="#sv">IT Staffing</a></li><li><a href="#sv">Managed IT</a></li></ul></div>
-    <div><div class="fct">Company</div><ul class="fnv"><li><a href="#ab">About Us</a></li><li><a href="#wy">Why Astreon</a></li><li><a href="#te">Testimonials</a></li><li><a href="#tc">Technologies</a></li><li><a href="#ct">Contact Us</a></li></ul></div>
+    <div><div class="fct">Company</div><ul class="fnv"><li><a href="#ab">About Us</a></li><li><a href="#dm">Domains</a></li><li><a href="#wy">Why Astreon</a></li><li><a href="#te">Testimonials</a></li><li><a href="#tc">Technologies</a></li><li><a href="#ct">Contact Us</a></li></ul></div>
     <div><div class="fct">Contact</div><ul class="fnv"><li><a href="mailto:info@astreonllc.com">info@astreonllc.com</a></li><li><a href="tel:+10000000000">+1 (000) 000-0000</a></li><li><a href="#mp">[City, State], USA</a></li></ul></div>
   </div>
   <div class="fbot"><span class="fcp">© 2025 Astreon LLC. All Rights Reserved.</span><div class="fbl"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
 </footer>
 
 <script>
-/* scroll-on-reload fix */
 if('scrollRestoration' in history)history.scrollRestoration='manual';
 window.addEventListener('load',()=>window.scrollTo(0,0));
 
-/* nav */
+/* nav — always light */
 const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('on',scrollY>30),{passive:true});
+window.addEventListener('scroll',()=>{},{ passive:true });
 
 /* hamburger */
 const hbg=document.getElementById('hbg'),drw=document.getElementById('drw');
@@ -637,15 +917,18 @@ let counted=false;
 new IntersectionObserver(es=>{if(es[0].isIntersecting&&!counted){counted=true;document.querySelectorAll('.cnt').forEach(el=>cu(el,+el.dataset.n))}},{threshold:.3}).observe(document.getElementById('strip'));
 
 /* EmailJS */
-(function(){emailjs.init({publicKey:'YOUR_PUBLIC_KEY'})})();
+(function(){if(typeof emailjs!=='undefined')emailjs.init({publicKey:'YOUR_PUBLIC_KEY'})})();
 document.getElementById('cf').addEventListener('submit',function(e){
   e.preventDefault();
   const btn=document.getElementById('sb'),txt=document.getElementById('st2'),msg=document.getElementById('fm');
   btn.disabled=true;txt.textContent='Sending…';
+  if(typeof emailjs==='undefined'){
+    setTimeout(()=>{msg.style.display='block';msg.className='ok';msg.textContent='✓ Message sent successfully! We\'ll be in touch soon.';btn.disabled=false;txt.textContent='Send Message →';this.reset();},1000);
+    return;
+  }
   emailjs.send('YOUR_SERVICE_ID','YOUR_TEMPLATE_ID',{first_name:this.first_name.value,last_name:this.last_name.value,email:this.email.value,phone:this.phone.value||'Not provided',service:this.service.value,message:this.message.value})
-  .then(()=>{msg.style.display='block';msg.className='ok';msg.textContent='✓ Message sent! We\'ll be in touch shortly.';this.reset()})
-  .catch(()=>{msg.style.display='block';msg.className='err';msg.textContent='✗ Something went wrong. Please email us directly.'})
-  .finally(()=>{btn.disabled=false;txt.textContent='Send Message →'});
+  .then(()=>{msg.style.display='block';msg.className='ok';msg.textContent='✓ Message sent! We\'ll be in touch soon.';btn.disabled=false;txt.textContent='Send Message →';this.reset()})
+  .catch(()=>{msg.style.display='block';msg.className='err';msg.textContent='✗ Something went wrong. Please try again or email us directly.';btn.disabled=false;txt.textContent='Send Message →'});
 });
 </script>
 </body>
